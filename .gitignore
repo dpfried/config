@@ -1,0 +1,7 @@
+*
+!.xmonad/
+!.zshrc
+!.vimrc
+!.emacs
+!.xmobarrc
+!.gitignore
