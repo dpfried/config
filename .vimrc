@@ -177,7 +177,6 @@ set wildmode=list:longest,full
 
 colorscheme desert
 
-set rnu
 map <C-j> 5j
 map <C-k> 5k
 map <C-h> 5h
