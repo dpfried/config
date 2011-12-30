@@ -1,0 +1,56 @@
+import XMonad
+import XMonad.Config.Gnome
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Layout.NoBorders
+import System.IO
+import XMonad.Hooks.ManageHelpers
+
+myManageHook = composeAll
+    [ className =? "Gimp"      --> doFloat
+    , className =? "Vncviewer" --> doFloat
+    ]
+
+main = do
+    xmproc <- spawnPipe "xmobar"
+    xmonad $ defaultConfig
+        { terminal = "urxvt"
+        ,modMask = mod4Mask
+	,manageHook = manageDocks <+> myManageHook -- make sure to include myManageHook definition from above
+                        <+> manageHook defaultConfig
+        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        , logHook = dynamicLogWithPP $ xmobarPP
+                        { ppOutput = hPutStrLn xmproc
+                        , ppTitle = xmobarColor "green" "" . shorten 50
+                       }
+        } `additionalKeys`
+        [ ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+        , ((0, xK_Print), spawn "scrot")
+	-- XF86AudioMute
+	, ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
+	-- XF86AudioLowerVolume
+	, ((0, 0x1008ff11), spawn "amixer set Master 5%-")
+	-- XF86AudioRaiseVolumer 
+	, ((0, 0x1008ff13), spawn "amixer set Master 5%+")
+	-- XF86 Suspend
+	, ((0, 0x1008ffa7), spawn "home/daniel/scripts/suspend.sh") 
+        , ((mod4Mask, xK_F4), spawn "/home/daniel/scripts/suspend.sh")
+	, ((mod4Mask, xK_m), spawn "/home/daniel/scripts/syslog-notify.sh")
+        , ((mod4Mask, xK_b), spawn "/home/daniel/scripts/battery.py")
+	, ((mod4Mask, xK_c), spawn "/home/daniel/scripts/thermal.py")
+        , ((mod4Mask, xK_F2), spawn "gnome-screensaver-command --lock")
+        , ((mod4Mask, xK_u), spawn "/home/daniel/scripts/single-head.sh")
+        , ((mod4Mask, xK_i), spawn "/home/daniel/scripts/dual-head.sh")
+	, ((mod4Mask, xK_s), spawn "xmodmap /home/daniel/.speedswapper")
+	, ((mod4Mask, xK_o), spawn "/home/daniel/scripts/monitor-only.sh")
+	, ((mod4Mask, xK_y), spawn "/home/daniel/scripts/add-modes.sh")
+        ]
+{-
+main = xmonad
+    gnomeConfig {
+            terminal = "term"
+          , layoutHook  = smartBorders (layoutHook gnomeConfig)
+    }
+-}
