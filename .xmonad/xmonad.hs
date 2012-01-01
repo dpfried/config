@@ -28,7 +28,7 @@ myStartupHook = do
     spawn "nm-applet"
     spawn "gnome-power-manager"
     spawn "~/scripts/2frsc"
-    --setWMName "LG3D"
+    setWMName "LG3D"
 
 myLayout = mouseResize $ windowArrange $ avoidStruts $ tiled ||| Grid ||| Full ||| tabbed shrinkText dfriedTabConfig
     where
