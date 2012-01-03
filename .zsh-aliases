@@ -1,8 +1,9 @@
 alias mkdir='nocorrect mkdir'
 alias cp='nocorrect cp'
 alias mv='nocorrect mv'
-alias rm='trash-rm'
 alias rm='nocorrect rm'
+alias ls='ls -F'
+alias  u='uptime'
 
 # Go up directory tree X number of directories
 function up() {
