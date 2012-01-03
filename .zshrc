@@ -27,6 +27,7 @@ ZSH_THEME="flazz"
 plugins=(git python svn extract rails rails3 rvm ruby vi-mode)
 
 source $ZSH/oh-my-zsh.sh
+source .zsh-aliases
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/dfried/bin:/home/dfried/eclipse:/home/dfried/scripts:.
