@@ -36,3 +36,4 @@ source $ZSH/zsh-aliases.sh
 [[ $EMACS = t ]] && unsetopt zle
 umask 066
 [[ -s "/home/dfried/.rvm/scripts/rvm" ]] && source "/home/dfried/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+bindkey -e
