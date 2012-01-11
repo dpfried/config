@@ -3,6 +3,7 @@ alias cp='nocorrect cp'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
 alias  u='uptime'
+alias go='gnome-open'
 
 # Go up directory tree X number of directories
 function up() {
