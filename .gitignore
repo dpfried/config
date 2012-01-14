@@ -1,5 +1,5 @@
 *
-!.xmonad/
+!.xmonad/xmonad.hs
 !.zshrc
 !.vimrc
 !.emacs

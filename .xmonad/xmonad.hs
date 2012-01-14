@@ -30,9 +30,10 @@ myStartupHook = do
     spawn "~/scripts/2frsc"
     setWMName "LG3D"
 
-myLayout = mouseResize $ windowArrange $ avoidStruts $ tiled ||| Grid ||| Full ||| tabbed shrinkText dfriedTabConfig
+myLayout = mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed
     where
         tiled = ResizableTall nmaster delta (1/2) []
+        myTabbed = tabbed shrinkText dfriedTabConfig 
         nmaster = 1
         delta = 0.03
 
@@ -41,7 +42,8 @@ main = do
     xmonad $ defaultConfig
         { terminal = "gnome-terminal"
         ,borderWidth = 2
-        ,normalBorderColor = "#1E2340"
+        --,normalBorderColor = "#1E2340"
+        ,normalBorderColor = "black"
         ,focusedBorderColor = "yellow"
         ,modMask = mod4Mask
         ,manageHook = manageDocks <+> myManageHook -- make sure to include myManageHook definition from above
@@ -95,8 +97,11 @@ dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
                       , ppTitle = xmobarColor "white" "" . shorten 60
 }
 
-dfriedTabConfig = defaultTheme { inactiveColor = "#1E2340"
-                                , activeColor = "#1E2340"
+dfriedTabConfig = defaultTheme { 
+--                                  inactiveColor = "#1E2340"
+--                                , activeColor = "#1E2340"
+                                  inactiveColor = "black"
+                                , activeColor = "black"
                                 , inactiveTextColor = "grey"
                                 , activeTextColor = "yellow"
                                 , fontName = "xft:Envy Code R Bold:pixelsize=11"

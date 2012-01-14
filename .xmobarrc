@@ -1,7 +1,7 @@
 Config { font = "xft:Envy Code R Bold:pixelsize=11"
-        -- , bgColor = "black"
+         , bgColor = "black"
         -- , fgColor = "grey"
-        , bgColor = "#1E2340"
+        --, bgColor = "#1E2340"
         , fgColor = "grey"
         , position = TopW L 100
         -- , lowerOnStart = False
@@ -11,8 +11,10 @@ Config { font = "xft:Envy Code R Bold:pixelsize=11"
  --       Run Network "wlan0" ["-L","0","-H","32","--normal","red","--high","red"] 10 ,
  --           Run Network "eth0" ["-L","0","-H","32","--normal","red","--high","red"] 10
                 , Run Cpu ["-L","15","-H","50","--normal","grey","--high","white"] 10
+                , Run CpuFreq ["-t", " ", "-L", "0", "-H", "2", "-l", "lightblue", "-n","white", "-h", "red"] 50
                 , Run Battery [] 600
                 , Run Memory ["-t","Mem: <usedratio>%"] 10
+                -- , Run Memory [] 10
                 , Run Swap [] 10
                 --  , Run Date "%b %_D %Y %H:%M:%S" "date" 10
                  , Run Date "%a %e %b %k:%M" "date" 600
