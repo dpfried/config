@@ -29,3 +29,9 @@ function up() {
         return 1
     fi
 }
+
+function ccat() {
+    for f in $@; do
+        src-hilite-lesspipe.sh $f
+    done
+}

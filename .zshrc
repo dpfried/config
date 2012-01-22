@@ -37,3 +37,6 @@ source $ZSH/zsh-aliases.sh
 umask 066
 [[ -s "/home/dfried/.rvm/scripts/rvm" ]] && source "/home/dfried/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 bindkey -e
+
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=' -R '
