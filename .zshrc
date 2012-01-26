@@ -40,3 +40,5 @@ bindkey -e
 
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
+
+[[ -f "/opt/ros/electric/setup.zsh" ]] && source /opt/ros/electric/setup.zsh
