@@ -175,7 +175,8 @@ map <A-/> <C-x><C-u>
 set wildmenu
 set wildmode=list:longest,full
 
-colorscheme desert
+set t_Co=256
+colorscheme wombat
 
 map <C-j> 5j
 map <C-k> 5k

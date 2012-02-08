@@ -5,6 +5,8 @@ alias rm='nocorrect rm'
 alias  u='uptime'
 alias go='gnome-open'
 alias  b='popd'
+alias  f='pushd'
+alias  h='dirs'
 
 # Go up directory tree X number of directories
 function up() {
