@@ -176,7 +176,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 set t_Co=256
-colorscheme wombat
+colorscheme molokai
 
 map <C-j> 5j
 map <C-k> 5k
