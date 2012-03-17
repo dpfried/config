@@ -14,6 +14,9 @@
 set swapfile
 set backupdir=~/.vimtmp
 set directory=~/.vimswp
+set modelines=0               " no exploits plox
+set shiftround                " round my spaces to a multiple of shiftwidth
+set encoding=utf-8            " encoding of the people
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -129,6 +132,9 @@ set smartcase
 "Informative status line
 set laststatus=2
 
+"clear out highlighting by hitting '\ '
+nnoremap <leader><space> :noh<cr>
+
 syntax enable
 
 "Enable indent folding
@@ -140,6 +146,8 @@ nnoremap <space> za
 
 "Hide buffer when not in window (to prevent relogin with FTP edit)
 set bufhidden=hide
+
+set hidden
 
 "Have 3 lines of offset (or buffer) when scrolling
 set scrolloff=3
@@ -171,6 +179,7 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-/> <C-x><C-u>
 
+set ttyfast                   " send more characters
 
 set wildmenu
 set wildmode=list:longest,full

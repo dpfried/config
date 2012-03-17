@@ -2,15 +2,16 @@ alias mkdir='nocorrect mkdir'
 alias cp='nocorrect cp'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
-alias  u='uptime'
+alias up='uptime'
 alias go='gnome-open'
 alias  b='popd'
 alias  f='pushd'
 alias  h='dirs'
+alias gt='gnome-terminal'
 alias ps='ps aux'
 
 # Go up directory tree X number of directories
-function up() {
+function u() {
     COUNTER="$@";
     # default $COUNTER to 1 if it isn't already set
     if [[ -z $COUNTER ]]; then

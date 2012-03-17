@@ -43,7 +43,7 @@ main = do
         { terminal = "gnome-terminal"
         ,borderWidth = 2
         --,normalBorderColor = "#1E2340"
-        ,normalBorderColor = "black"
+        ,normalBorderColor = "#121212"
         ,focusedBorderColor = "yellow"
         ,modMask = mod4Mask
         ,manageHook = manageDocks <+> myManageHook -- make sure to include myManageHook definition from above
@@ -69,8 +69,8 @@ main = do
         , ((0, 0x1008ffa7), spawn "home/dfried/scripts/suspend.sh") 
         -- alternate suspend
         , ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
-        -- what does this one do? idk
-        , ((mod4Mask, xK_m), spawn "/home/dfried/scripts/syslog-notify.sh")
+        , ((mod4Mask, xK_m), spawn "/home/dfried/scripts/start_gnome_panel close")
+        , ((mod4Mask, xK_n), spawn "/home/dfried/scripts/start_gnome_panel open")
         -- display battery %
         , ((mod4Mask, xK_b), spawn "/home/dfried/scripts/battery.py")
         -- diisplay cpu temp
@@ -81,13 +81,12 @@ main = do
         , ((mod4Mask, xK_F10), spawn "/home/dfried/scripts/dual-head.sh")
         , ((mod4Mask, xK_F11), spawn "/home/dfried/scripts/lab-head.sh")
         , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/monitor-only.sh")
-        -- swap esc and caps lock for vim use
-        , ((mod4Mask, xK_s), spawn "xmodmap /home/dfried/.speedswap")
+        , ((mod4Mask, xK_s), spawn "/home/dfried/scripts/screenshot.sh")
         -- deprecatedU
         -- , ((mod4Mask, xK_y), spawn "/home/dfried/scripts/add-modes.sh")
         -- grid select
         , ((mod4Mask, xK_g), goToSelected defaultGSConfig)
-        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "vlc", "firefox", "uzbl", "sqlitebrowser"])
+        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "vlc", "firefox", "gvim", "mysql-query-browser", "gnome-calculator"])
         , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["battery.py", "thermal.py"])
         ]
 
@@ -98,10 +97,10 @@ dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
 }
 
 dfriedTabConfig = defaultTheme { 
---                                  inactiveColor = "#1E2340"
---                                , activeColor = "#1E2340"
-                                  inactiveColor = "black"
-                                , activeColor = "black"
+                                  inactiveColor = "#121212"
+                                , activeColor = "#121212"
+--                                  inactiveColor = "black"
+--                                , activeColor = "black"
                                 , inactiveTextColor = "grey"
                                 , activeTextColor = "yellow"
                                 , fontName = "xft:Envy Code R Bold:pixelsize=11"

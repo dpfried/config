@@ -30,7 +30,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh-aliases
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/dfried/bin:/home/dfried/eclipse:/home/dfried/scripts:.
+export PATH=/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/dfried/bin:/home/dfried/eclipse:/home/dfried/scripts:/home/dfried/Protege_4.1:.
 
 source $ZSH/zsh-aliases.sh
 [[ $EMACS = t ]] && unsetopt zle
@@ -42,3 +42,5 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 [[ -f "/opt/ros/electric/setup.zsh" ]] && source /opt/ros/electric/setup.zsh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
