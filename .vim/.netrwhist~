@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/usr/share/X11/xorg.conf.d'
+let g:netrw_dirhist_2='/home/daniel/.vim'
+let g:netrw_dirhist_3='/osshare/dropbox/research/voting-experts/ve/build'
+let g:netrw_dirhist_4='/osshare/dropbox/c'

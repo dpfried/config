@@ -1,8 +1,6 @@
-*
-!.xmonad/xmonad.hs
-!.zshrc
-!.vimrc
-!.emacs
-!.xmobarrc
-!.gitignore
-!.zsh-aliases
+.xmonad/xmonad-x86_64-linux
+.xmonad/xmonad.errors
+.xmonad/xmonad.hi
+.xmonad/xmonad.hs~
+.xmonad/xmonad.o
+.xmonad/xmonad.old
