@@ -1,10 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/home/dfried/fried/lib/virtual_students'
-let g:netrw_dirhist_2='/etc/cron.daily'
-let g:netrw_dirhist_3='/tmp/Benjamin-Lang-Photography/app/controllers'
-let g:netrw_dirhist_4='/home/dfried/eclipse/readme'
-let g:netrw_dirhist_5='/tmp'
-let g:netrw_dirhist_6='/home/dfried/.vim'
-let g:netrw_dirhist_7='/home/dfried/fried/app/views/present'
-let g:netrw_dirhist_8='/home/dfried/sem4/245/cs245hw4/eliblack'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/dfried/bolt_gt/analysis'
