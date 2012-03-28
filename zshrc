@@ -32,7 +32,6 @@ source ~/.zsh-aliases
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/dfried/bin:/home/dfried/eclipse:/home/dfried/scripts:/home/dfried/Protege_4.1:.
 
-source $ZSH/zsh-aliases.sh
 [[ $EMACS = t ]] && unsetopt zle
 umask 066
 [[ -s "/home/dfried/.rvm/scripts/rvm" ]] && source "/home/dfried/.rvm/scripts/rvm"  # This loads RVM into a shell session.

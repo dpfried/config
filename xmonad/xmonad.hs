@@ -18,8 +18,9 @@ import XMonad.Actions.MouseResize
 import XMonad.Layout.WindowArranger
 
 myManageHook = composeAll
-    [ className =? "Gimp"      --> doFloat
+    [ className =? "Gimp" --> doFloat
     , className =? "Vncviewer" --> doFloat
+    , title =? "room_ground_truther" --> doFloat
     ]
 
 myStartupHook = do

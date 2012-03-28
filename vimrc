@@ -1,3 +1,6 @@
+" pathogen "
+call pathogen#infect()
+
 " Keep all swap files together
 set swapfile
 set backupdir=~/.vimtmp
@@ -173,12 +176,20 @@ set wildmenu
 set wildmode=list:longest,full
 
 set t_Co=256
-colorscheme vividchalk
+colorscheme molokai
 
 map <C-j> 5j
 map <C-k> 5k
 map <C-h> 5h
 map <C-l> 5l
 
-" pathogen "
-call pathogen#infect()
+" syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+set statusline+=%{fugitive#statusline()}
+let g:syntastic_auto_loc_list=1
+let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_enable_signs=1
+let g:syntastic_python_checker = 'pyflakes'
+
