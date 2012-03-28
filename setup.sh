@@ -3,6 +3,9 @@ SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
+cd $DIR
+git pull && git submodule init && git submodule update && git submodule status
+
 rm ~/.emacs && ln -s $DIR/emacs ~/.emacs
 rm -rf ~/.oh-my-zsh && ln -s $DIR/oh-my-zsh ~/.oh-my-zsh
 rm -rf ~/.vim && ln -s $DIR/vim ~/.vim
