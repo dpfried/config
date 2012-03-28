@@ -30,11 +30,11 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh-aliases
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/dfried/bin:/home/dfried/eclipse:/home/dfried/scripts:/home/dfried/Protege_4.1:.
+export PATH=/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:/usr/games:/home/$USER/bin:/home/$USER/eclipse:/home/$USER/scripts:/home/$USER/Protege_4.1:.
 
 [[ $EMACS = t ]] && unsetopt zle
 umask 066
-[[ -s "/home/dfried/.rvm/scripts/rvm" ]] && source "/home/dfried/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+[[ -s "/home/$USER/.rvm/scripts/rvm" ]] && source "/home/$USER/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 bindkey -e
 
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
