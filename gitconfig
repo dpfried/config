@@ -1,0 +1,9 @@
+[user]
+	name = Daniel Fried
+	email = dfried@email.arizona.edu
+[alias]
+	co = checkout
+[diff]
+    external = git_diff_wrapper
+[pager]
+    diff =
