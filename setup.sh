@@ -14,3 +14,4 @@ rm ~/.xmobarrc && ln -s $DIR/xmobarrc ~/.xmobarrc
 rm -rf ~/.xmonad && ln -s $DIR/xmonad ~/.xmonad
 rm ~/.zsh-aliases && ln -s $DIR/zsh-aliases ~/.zsh-aliases
 rm ~/.zshrc && ln -s $DIR/zshrc ~/.zshrc
+rm ~/.gitconfig && ln -s $DIR/gitconfig ~/.gitconfig
