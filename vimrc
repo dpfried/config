@@ -1,5 +1,6 @@
 " pathogen "
 call pathogen#infect()
+call pathogen#helptags()
 
 " Keep all swap files together
 set swapfile
