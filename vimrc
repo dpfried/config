@@ -176,21 +176,27 @@ set ttyfast                   " send more characters
 set wildmenu
 set wildmode=list:longest,full
 
+" colors
 set t_Co=256
 colorscheme molokai
 
+" enhanced movement
 map <C-j> 5j
 map <C-k> 5k
 map <C-h> 5h
 map <C-l> 5l
 
 " syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-set statusline+=%{fugitive#statusline()}
 let g:syntastic_auto_loc_list=1
 let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_enable_signs=1
 let g:syntastic_python_checker = 'pyflakes'
 
+" statusline
+"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+let g:statline_fugitive = 1
+let g:statline_rvm = 1 
+let g:statline_filename_relative = 1
