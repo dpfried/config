@@ -6,9 +6,9 @@ call pathogen#helptags()
 set swapfile
 set backupdir=~/.vimtmp
 set directory=~/.vimswp
-set modelines=0               " no exploits plox
-set shiftround                " round my spaces to a multiple of shiftwidth
-set encoding=utf-8            " encoding of the people
+set modelines=0               
+set shiftround               
+set encoding=utf-8          
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
