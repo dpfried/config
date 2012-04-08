@@ -28,5 +28,5 @@ Config { font = "xft:Envy Code R Bold:pixelsize=11"
                 , sepChar = "%"
                 , alignSep = "}{"
                  -- , template = "%StdinReader% }{ %dropbox% | %cpu% | %memory% | %battery% | %eth0% | %wlan0% | %wifi% |  %vol% | %date%"
-                 , template = "%StdinReader% }{ %shell-fm% | %vol% | %cpu% | %memory% | %batt% | %wlan0% | %wifi% | %date%"
+                 , template = "%StdinReader% }{  %shell-fm% | %dropbox% | %vol% | %cpu% | %memory% | %batt% | %wlan0% | %wifi% | %date%"
 }
