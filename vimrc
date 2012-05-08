@@ -152,18 +152,18 @@ inoremap {<CR>  {<CR>}<Esc>O
 inoremap {{     {
 
 " settings for eclim, taglist"
-let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-let g:EclimBrowser='xdg-open'
-let TList_WinWidth = 50
-map <F2> <ESC>:JavaCorrect<cr>
-map <F3> <ESC>:JavaImportMissing<cr>:JavaImportClean<cr>
-map <F4> <ESC>:TlistToggle<CR>
-map <F5> <ESC>:JavaSearch<CR>
-map <F6> <ESC>:JavaImpl<CR>
-map <F7> <ESC>:JavaDocComment<CR>
-map <F8> <ESC>:JavaSearchContext<CR>
-map <F9> <ESC>:Java<CR>
-nnoremap <F11> <ESC>:Validate<cr>
+"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+"let g:EclimBrowser='xdg-open'
+"let TList_WinWidth = 50
+"map <F2> <ESC>:JavaCorrect<cr>
+"map <F3> <ESC>:JavaImportMissing<cr>:JavaImportClean<cr>
+"map <F4> <ESC>:TlistToggle<CR>
+"map <F5> <ESC>:JavaSearch<CR>
+"map <F6> <ESC>:JavaImpl<CR>
+"map <F7> <ESC>:JavaDocComment<CR>
+"map <F8> <ESC>:JavaSearchContext<CR>
+"map <F9> <ESC>:Java<CR>
+"nnoremap <F11> <ESC>:Validate<cr>
 
 " settings for exuberant ctags "
 set tags=tags;/
@@ -200,3 +200,6 @@ let g:syntastic_python_checker = 'pyflakes'
 let g:statline_fugitive = 1
 let g:statline_rvm = 1 
 let g:statline_filename_relative = 1
+
+" gundo
+noremap <F5> :GundoToggle<CR>

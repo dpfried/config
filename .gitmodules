@@ -34,3 +34,6 @@
 [submodule "vim/bundle/dbext"]
 	path = vim/bundle/dbext
 	url = https://github.com/vim-scripts/dbext.vim.git
+[submodule "vim/bundle/gundo"]
+	path = vim/bundle/gundo
+	url = http://github.com/sjl/gundo.vim.git
