@@ -181,10 +181,10 @@ set t_Co=256
 colorscheme molokai
 
 " enhanced movement
-map <C-j> 5j
-map <C-k> 5k
-map <C-h> 5h
-map <C-l> 5l
+map <C-j> 8j
+map <C-k> 8k
+map <C-h> 8h
+map <C-l> 8l
 
 " syntastic
 let g:syntastic_auto_loc_list=1
