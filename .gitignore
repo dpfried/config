@@ -4,3 +4,7 @@ xmonad/xmonad.hi
 xmonad/xmonad.hs~
 xmonad/xmonad.o
 xmonad/xmonad.old
+
+vim/bundle/*
+!vim/bundle/vundle
+vim/.netrwhist
