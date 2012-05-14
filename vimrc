@@ -1,6 +1,28 @@
 " pathogen "
-call pathogen#infect()
-call pathogen#helptags()
+" call pathogen#infect()
+" call pathogen#helptags()
+ 
+" vundle
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" load plugins with vundle
+Bundle 'wincent/Command-T'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/snipmate-snippets'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'millermedeiros/vim-statline'
+Bundle 'robbyrussell/oh-my-zsh'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'vim-scripts/dbext.vim'
+Bundle 'sjl/gundo.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-easymotion'
 
 " Keep all swap files together
 set swapfile
@@ -9,6 +31,7 @@ set directory=~/.vimswp
 set modelines=0               
 set shiftround               
 set encoding=utf-8          
+
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -203,3 +226,9 @@ let g:statline_filename_relative = 1
 
 " gundo
 noremap <F5> :GundoToggle<CR>
+
+" Powerline fonts
+set guifont=Envy\ Code\ R-Powerline.ttf
+
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'short'
