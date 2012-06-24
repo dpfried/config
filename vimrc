@@ -23,6 +23,8 @@ Bundle 'vim-scripts/dbext.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'jpalardy/vim-slime'
+Bundle 'tpope/vim-surround'
 
 " Keep all swap files together
 set swapfile
