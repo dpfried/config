@@ -8,14 +8,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " load plugins with vundle
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'ervandew/supertab.git'
+Bundle 'jpalardy/vim-slime'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'jpalardy/vim-slime'
 Bundle 'millermedeiros/vim-statline'
-Bundle 'msanders/snipmate.vim'
-Bundle 'robbyrussell/oh-my-zsh'
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/snipmate-snippets'
 Bundle 'scrooloose/syntastic'
@@ -23,10 +21,13 @@ Bundle 'sjl/gundo.vim'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/dbext.vim'
 Bundle 'wincent/Command-T'
+Bundle 'pangloss/vim-javascript'
+Bundle 'sukima/xmledit'
 
 " Keep all swap files together
 set swapfile
@@ -236,3 +237,9 @@ set guifont=Envy\ Code\ R-Powerline.ttf
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'short'
+
+set ofu=syntaxcomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
