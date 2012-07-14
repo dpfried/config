@@ -26,7 +26,7 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/dbext.vim'
 Bundle 'wincent/Command-T'
-Bundle 'pangloss/vim-javascript'
+"Bundle 'pangloss/vim-javascript'
 Bundle 'sukima/xmledit'
 
 " Keep all swap files together
@@ -241,5 +241,7 @@ let g:Powerline_stl_path_style = 'short'
 set ofu=syntaxcomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 
+" xml stuff
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
+let g:xml_use_xhtml=1
