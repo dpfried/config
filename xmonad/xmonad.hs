@@ -20,15 +20,16 @@ import XMonad.Layout.WindowArranger
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
     , className =? "Vncviewer" --> doFloat
+    , className =? "Unity-2d-panel" --> doIgnore
+    , className =? "Unity-2d-launcher" --> doFloat
     , title =? "room_ground_truther" --> doFloat
     ]
 
 myStartupHook = do
 --    spawn "trayer --SetDockType true --SetPartialStrut true"
     spawn "gnome-settings-daemon"
-    spawn "nm-applet"
+    spawn "pidof nm-applet || nm-applet"
     spawn "gnome-power-manager"
-    spawn "~/scripts/2frsc"
     setWMName "LG3D"
 
 myLayout = mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed
@@ -61,11 +62,11 @@ main = do
         [ ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
         -- XF86AudioMute
-        , ((0, 0x1008ff12), spawn "amixer -q set Master toggle")
+        --, ((0, 0x1008ff12), spawn "/home/dfried/scripts/toggle_mute.sh")
         -- XF86AudioLowerVolume
-        , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
+        --, ((0, 0x1008ff11), spawn "amixer set Master 5%-")
         -- XF86AudioRaiseVolumer 
-        , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
+        --, ((0, 0x1008ff13), spawn "amixer set Master 5%+")
        -- XF86 Suspend
         , ((0, 0x1008ffa7), spawn "home/dfried/scripts/suspend.sh") 
         -- alternate suspend

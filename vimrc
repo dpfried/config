@@ -5,11 +5,11 @@
 " vundle
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
-Bundle 'gmarik/vundle'
 
 " load plugins with vundle
+Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'ervandew/supertab.git'
+" Bundle 'ervandew/supertab.git'
 Bundle 'jpalardy/vim-slime'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
@@ -28,6 +28,15 @@ Bundle 'vim-scripts/dbext.vim'
 Bundle 'wincent/Command-T'
 "Bundle 'pangloss/vim-javascript'
 Bundle 'sukima/xmledit'
+
+" Python stuff (from sontek.net)
+Bundle 'tpope/vim-git'
+Bundle 'ervandew/supertab'
+Bundle 'mileszs/ack.vim'
+Bundle 'fs111/pydoc.vim'
+Bundle 'vim-scripts/pep8'
+Bundle 'sontek/rope-vim'
+"Bundle 'mitechie/pyflakes-pathogen'
 
 " Keep all swap files together
 set swapfile
@@ -230,10 +239,10 @@ let g:statline_rvm = 1
 let g:statline_filename_relative = 1
 
 " gundo
-noremap <F5> :GundoToggle<CR>
+noremap <F4> :GundoToggle<CR>
 
 " Powerline fonts
-set guifont=Envy\ Code\ R-Powerline.ttf
+set guifont=Envy\ Code\ R\ for\ Powerline\ 12
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'short'
@@ -245,3 +254,6 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 let g:xml_use_xhtml=1
+
+" ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"

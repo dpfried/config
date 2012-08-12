@@ -24,9 +24,10 @@ Config { font = "xft:Envy Code R Bold:pixelsize=11"
                 , Run Com "/home/dfried/scripts/dropbox-status.sh" [] "dropbox" 10
                 , Run Com "/home/dfried/scripts/battery.sh" [] "batt" 200
                 , Run Com "/home/dfried/scripts/shell-fm-playing.sh" [] "shell-fm" 40
+                , Run Com "/home/dfried/scripts/pandora-playing.sh" [] "pandora" 40
                 ]
                 , sepChar = "%"
                 , alignSep = "}{"
-                 -- , template = "%StdinReader% }{ %dropbox% | %cpu% | %memory% | %battery% | %eth0% | %wlan0% | %wifi% |  %vol% | %date%"
-                 , template = "%StdinReader% }{  %shell-fm% | %dropbox% | %vol% | %cpu% | %memory% | %batt% | %wlan0% | %wifi% | %date%"
+                 -- , template = "%StdinReader% }{ %pandora% %shell-fm% | %dropbox% | %cpu% | %memory% | %battery% | %eth0% | %wlan0% | %wifi% |  %vol% | %date%"
+                 , template = "%StdinReader% }{  %pandora%%shell-fm% | %dropbox% | %vol% | %cpu% | %memory% | %batt% | %wlan0% | %wifi% | %date%"
 }
