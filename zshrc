@@ -44,4 +44,4 @@ export LESS=' -R '
 
 [[ -f "/opt/ros/electric/setup.zsh" ]] && source /opt/ros/electric/setup.zsh
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+source ~/py/bin/activate
