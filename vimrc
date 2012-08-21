@@ -9,7 +9,7 @@ Bundle 'gmarik/vundle'
 
 " load plugins with vundle
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'ervandew/supertab.git'
+"Bundle 'ervandew/supertab.git'
 Bundle 'jpalardy/vim-slime'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
@@ -233,7 +233,6 @@ let g:statline_filename_relative = 1
 noremap <F5> :GundoToggle<CR>
 
 " Powerline fonts
-set guifont=Envy\ Code\ R-Powerline.ttf
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'short'

@@ -16,6 +16,9 @@ import XMonad.Actions.GridSelect
 -- for mouse resize
 import XMonad.Actions.MouseResize
 import XMonad.Layout.WindowArranger
+-- for cycling workspaces
+import XMonad.Actions.CycleRecentWS
+import XMonad.Actions.CycleWS
 
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
@@ -89,6 +92,8 @@ main = do
         , ((mod4Mask, xK_g), goToSelected defaultGSConfig)
         , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "vlc", "firefox", "gvim", "mysql-query-browser", "gnome-calculator"])
         , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["~/scripts/uawifi", "~/scripts/uapublic", "~/scripts/zdm"])
+        -- cycle ws
+        , ((mod4Mask, xK_minus), toggleWS)
         ]
 
 dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
