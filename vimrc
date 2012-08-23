@@ -31,7 +31,6 @@ Bundle 'sukima/xmledit'
 
 " Python stuff (from sontek.net)
 Bundle 'tpope/vim-git'
-Bundle 'ervandew/supertab'
 Bundle 'mileszs/ack.vim'
 Bundle 'fs111/pydoc.vim'
 Bundle 'vim-scripts/pep8'
@@ -243,7 +242,6 @@ let g:statline_filename_relative = 1
 noremap <F4> :GundoToggle<CR>
 
 " Powerline fonts
-set guifont=Envy\ Code\ R\ for\ Powerline\ 12
 
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'short'
