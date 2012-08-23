@@ -36,6 +36,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'fs111/pydoc.vim'
 Bundle 'vim-scripts/pep8'
 Bundle 'sontek/rope-vim'
+Bundle 'jmcantrell/vim-virtualenv'
 "Bundle 'mitechie/pyflakes-pathogen'
 
 " Keep all swap files together
@@ -257,3 +258,6 @@ let g:xml_use_xhtml=1
 
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+" pydoc command to use virtualenv
+" let g:pydoc_cmd = '~/py/bin/python -m pydoc'

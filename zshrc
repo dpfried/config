@@ -26,7 +26,7 @@ DISABLE_UPDATE_PROMPT="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python svn extract rails rails3 rvm ruby vi-mode)
+plugins=(git python svn extract rails rails3 rvm ruby vi-mode virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh-aliases
@@ -35,7 +35,6 @@ source ~/.zsh-aliases
 export PATH=/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:/usr/games:/home/$USER/bin:/home/$USER/eclipse:/home/$USER/scripts:/home/$USER/Protege_4.1:.
 
 [[ $EMACS = t ]] && unsetopt zle
-umask 066
 [[ -s "/home/$USER/.rvm/scripts/rvm" ]] && source "/home/$USER/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 bindkey -e
 
@@ -43,5 +42,3 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
 [[ -f "/opt/ros/electric/setup.zsh" ]] && source /opt/ros/electric/setup.zsh
-
-source ~/py/bin/activate
