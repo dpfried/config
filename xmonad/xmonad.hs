@@ -19,6 +19,8 @@ import XMonad.Layout.WindowArranger
 -- for cycling workspaces
 import XMonad.Actions.CycleRecentWS
 import XMonad.Actions.CycleWS
+-- for searching windows
+import XMonad.Actions.WindowGo
 
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
@@ -76,10 +78,7 @@ main = do
         , ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
         , ((mod4Mask, xK_m), spawn "/home/dfried/scripts/start_gnome_panel close")
         , ((mod4Mask, xK_n), spawn "/home/dfried/scripts/start_gnome_panel open")
-        -- display battery %
-        , ((mod4Mask, xK_b), spawn "/home/dfried/scripts/battery.py")
         -- diisplay cpu temp
-        , ((mod4Mask, xK_c), spawn "/home/dfried/scripts/thermal.py")
         , ((mod4Mask, xK_F2), spawn "gnome-screensaver-command --lock")
         -- monitor commands
         , ((mod4Mask, xK_F9), spawn "/home/dfried/scripts/single-head.sh")

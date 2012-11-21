@@ -28,6 +28,8 @@ Bundle 'vim-scripts/dbext.vim'
 Bundle 'wincent/Command-T'
 "Bundle 'pangloss/vim-javascript'
 Bundle 'sukima/xmledit'
+"Bundle 'jcf/vim-latex'
+Bundle 'derekwyatt/vim-scala'
 
 " Python stuff (from sontek.net)
 Bundle 'tpope/vim-git'
@@ -98,6 +100,9 @@ if has("autocmd")
     " Use the default filetype settings, so that mail gets 'tw' set to 72,
     " 'cindent' is on in C files, etc.
     " Also load indent files, to automatically do language-dependent indenting.
+    "
+    " turn off filetype, see http://blog.darevay.com/2010/10/a-brief-note-on-pathogen-for-vim/
+    filetype off
     filetype plugin indent on
 
     " Put these in an autocmd group, so that we can delete them easily.
