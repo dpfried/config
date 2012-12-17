@@ -19,11 +19,13 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+#|
 (add-hook 'slime-repl-mode-hook
           (defun clojure-mode-slime-font-lock ()
             (require 'clojure-mode)
             (let (font-lock-mode)
               (clojure-mode-font-lock-setup))))
+|#
 
 ; backup files
 ; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
