@@ -49,3 +49,14 @@ autoload zmv
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export VICARE_LIBRARY_PATH=/home/dfried/scheme-tools:$VICARE_LIBRARY_PATH
+export PATH=/home/dfried/scheme-tools/bin:$PATH
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+source /etc/bash_completion.d/virtualenvwrapper
+
+# vicare
+export VICARE_LIBRARY_PATH=.:$HOME/vicare/bher:$HOME/vicare/scheme-tools
+export PATH=$HOME/vicare/bher:$PATH
