@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.StackSet as W
 import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -21,6 +22,12 @@ import XMonad.Actions.CycleRecentWS
 import XMonad.Actions.CycleWS
 -- for searching windows
 import XMonad.Actions.WindowGo
+-- prompt
+import XMonad.Prompt
+import XMonad.Prompt.Shell
+import XMonad.Prompt.Window
+import XMonad.Prompt.AppendFile
+import XMonad.Util.Scratchpad
 
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
@@ -28,7 +35,16 @@ myManageHook = composeAll
     , className =? "Unity-2d-panel" --> doIgnore
     , className =? "Unity-2d-launcher" --> doFloat
     , title =? "room_ground_truther" --> doFloat
-    ]
+    ] -- <+> manageScratchPad
+
+myTerminal = "gnome-terminal"
+manageScratchPad :: ManageHook
+manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
+    where 
+        h = 0.1   -- terminal height, 10%
+        w = 1     -- terminal width, 100%
+        t = 1 - h -- distance from top edge, 90%
+        l = 1 - w -- distance from left edge, 0%
 
 myStartupHook = do
 --    spawn "trayer --SetDockType true --SetPartialStrut true"
@@ -36,6 +52,12 @@ myStartupHook = do
     spawn "pidof nm-applet || nm-applet"
     spawn "gnome-power-manager"
     setWMName "LG3D"
+
+myXPConfig = amberXPConfig
+    -- XPC { font = "-misc-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
+        -- , bgColor = "#
+                   
+-- }
 
 myLayout = mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed
     where
@@ -47,7 +69,7 @@ myLayout = mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| sm
 main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig
-        { terminal = "gnome-terminal"
+        { terminal = myTerminal
         ,borderWidth = 2
         --,normalBorderColor = "#1E2340"
         ,normalBorderColor = "#121212"
@@ -94,6 +116,11 @@ main = do
         , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["~/scripts/uawifi", "~/scripts/uapublic", "~/scripts/zdm"])
         -- cycle ws
         , ((mod4Mask, xK_minus), toggleWS)
+        -- prompts
+        , ((mod4Mask, xK_w), windowPromptGoto myXPConfig)
+        , ((mod4Mask, xK_p), shellPrompt myXPConfig)
+        , ((mod4Mask, xK_j), appendFilePrompt myXPConfig "/home/dfried/notes")
+        , ((mod4Mask, xK_c), scratchpadSpawnActionCustom "gnome-terminal --disable-factory --name scratchpad")
         ]
 
 dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
