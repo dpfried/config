@@ -112,13 +112,13 @@ main = do
         -- , ((mod4Mask, xK_y), spawn "/home/dfried/scripts/add-modes.sh")
         -- grid select
         , ((mod4Mask, xK_g), goToSelected defaultGSConfig)
-        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "vlc", "firefox", "gvim", "mysql-query-browser", "gnome-calculator"])
+        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "firefox", "gnome-calculator"])
         , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["~/scripts/uawifi", "~/scripts/uapublic", "~/scripts/zdm"])
         , ((mod4Mask, xK_d), spawnSelected defaultGSConfig ["dropbox start", "dropbox stop"])
         -- cycle ws
         , ((mod4Mask, xK_minus), toggleWS)
         -- prompts
-        -- , ((mod4Mask, xK_w), windowPromptGoto myXPConfig)
+        , ((mod4Mask, xK_r), windowPromptGoto myXPConfig)
         , ((mod4Mask, xK_p), shellPrompt myXPConfig)
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
         , ((mod4Mask, xK_c), scratchpadSpawnActionCustom "gnome-terminal --disable-factory --name scratchpad")
