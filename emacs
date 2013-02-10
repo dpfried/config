@@ -1,22 +1,8 @@
-; color themes
-(add-to-list 'load-path "~/.emacs.d/color-theme")
-(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
-(require 'color-theme)
-(require 'color-theme-solarized)
-(color-theme-initialize)
-(color-theme-comidia)
+(add-to-list 'load-path "~/slime")
 
-; tool bar
-(tool-bar-mode -1)
-
-(add-to-list 'load-path "~/.emacs.d/clojure-mode")
-(require 'clojure-mode)
-
-(add-hook 'slime-repl-mode-hook
-          (defun clojure-mode-slime-font-lock ()
-            (require 'clojure-mode)
-            (let (font-lock-mode)
-              (clojure-mode-font-lock-setup))))
+(require 'slime)
+(add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
+(add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 
 ; backup files
 ; http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
