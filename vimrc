@@ -28,15 +28,21 @@ Bundle 'vim-scripts/dbext.vim'
 Bundle 'wincent/Command-T'
 "Bundle 'pangloss/vim-javascript'
 Bundle 'sukima/xmledit'
+"Bundle 'jcf/vim-latex'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'nelstrom/vim-blackboard'
 
-" Python stuff (from sontek.net)
 Bundle 'tpope/vim-git'
-Bundle 'mileszs/ack.vim'
-Bundle 'fs111/pydoc.vim'
-Bundle 'vim-scripts/pep8'
-Bundle 'sontek/rope-vim'
+Bundle 'klen/python-mode'
 Bundle 'jmcantrell/vim-virtualenv'
 "Bundle 'mitechie/pyflakes-pathogen'
+Bundle 'ivanov/vim-ipython'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-afterimage'
+
+" python-mode
+let g:pymode_folding = 0
+let g:pymode_lint_write = 0
 
 " Keep all swap files together
 set swapfile
@@ -72,9 +78,6 @@ set incsearch		" do incremental searching
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
@@ -98,6 +101,9 @@ if has("autocmd")
     " Use the default filetype settings, so that mail gets 'tw' set to 72,
     " 'cindent' is on in C files, etc.
     " Also load indent files, to automatically do language-dependent indenting.
+    "
+    " turn off filetype, see http://blog.darevay.com/2010/10/a-brief-note-on-pathogen-for-vim/
+    filetype off
     filetype plugin indent on
 
     " Put these in an autocmd group, so that we can delete them easily.
@@ -120,7 +126,6 @@ if has("autocmd")
     augroup END
 
 else
-
     set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
@@ -148,10 +153,6 @@ set softtabstop=4 "backspace over 4 characters when at beginning of line"
 set expandtab "turn tabs into whitespace
 set shiftwidth=4 "indent width for autoindent
 filetype indent on "indent depends on filetype
-
-"Shortcut to auto indent entire file
-nmap <F11> 1G=G
-imap <F11> <ESC>1G=Ga
 
 "Turn on incremental search with ignore case (except explicit caps)
 set incsearch
@@ -225,7 +226,7 @@ map <C-l> 8l
 
 " syntastic
 let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_disabled_filetypes=['html', 'tex']
 let g:syntastic_enable_signs=1
 let g:syntastic_python_checker = 'pyflakes'
 
@@ -242,7 +243,6 @@ let g:statline_filename_relative = 1
 noremap <F4> :GundoToggle<CR>
 
 " Powerline fonts
-
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'short'
 
@@ -254,8 +254,16 @@ let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 let g:xml_use_xhtml=1
 
-" ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+" python stuff
+au FileType python set omnifunc=pythoncomplete#Complete
+let ropevim_vim_completion = 1
+let ropevim_extended_complete = 1
+imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " pydoc command to use virtualenv
 " let g:pydoc_cmd = '~/py/bin/python -m pydoc'
+"
+" turn off toolbar in gvim
+:set guioptions-=T
+
+:set guifont=Envy\ Code\ R\ for\ Powerline\ 10
