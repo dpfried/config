@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.StackSet as W
 import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -19,6 +20,14 @@ import XMonad.Layout.WindowArranger
 -- for cycling workspaces
 import XMonad.Actions.CycleRecentWS
 import XMonad.Actions.CycleWS
+-- for searching windows
+import XMonad.Actions.WindowGo
+-- prompt
+import XMonad.Prompt
+import XMonad.Prompt.Shell
+import XMonad.Prompt.Window
+import XMonad.Prompt.AppendFile
+import XMonad.Util.Scratchpad
 
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
@@ -26,7 +35,16 @@ myManageHook = composeAll
     , className =? "Unity-2d-panel" --> doIgnore
     , className =? "Unity-2d-launcher" --> doFloat
     , title =? "room_ground_truther" --> doFloat
-    ]
+    ] -- <+> manageScratchPad
+
+myTerminal = "gnome-terminal"
+manageScratchPad :: ManageHook
+manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
+    where 
+        h = 0.1   -- terminal height, 10%
+        w = 1     -- terminal width, 100%
+        t = 1 - h -- distance from top edge, 90%
+        l = 1 - w -- distance from left edge, 0%
 
 myStartupHook = do
 --    spawn "trayer --SetDockType true --SetPartialStrut true"
@@ -34,6 +52,12 @@ myStartupHook = do
     spawn "pidof nm-applet || nm-applet"
     spawn "gnome-power-manager"
     setWMName "LG3D"
+
+myXPConfig = amberXPConfig
+    -- XPC { font = "-misc-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
+        -- , bgColor = "#
+                   
+-- }
 
 myLayout = mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed
     where
@@ -45,7 +69,7 @@ myLayout = mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| sm
 main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ defaultConfig
-        { terminal = "gnome-terminal"
+        { terminal = myTerminal
         ,borderWidth = 2
         --,normalBorderColor = "#1E2340"
         ,normalBorderColor = "#121212"
@@ -76,25 +100,28 @@ main = do
         , ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
         , ((mod4Mask, xK_m), spawn "/home/dfried/scripts/start_gnome_panel close")
         , ((mod4Mask, xK_n), spawn "/home/dfried/scripts/start_gnome_panel open")
-        -- display battery %
-        , ((mod4Mask, xK_b), spawn "/home/dfried/scripts/battery.py")
         -- diisplay cpu temp
-        , ((mod4Mask, xK_c), spawn "/home/dfried/scripts/thermal.py")
         , ((mod4Mask, xK_F2), spawn "gnome-screensaver-command --lock")
         -- monitor commands
-        , ((mod4Mask, xK_F9), spawn "/home/dfried/scripts/single-head.sh")
-        , ((mod4Mask, xK_F10), spawn "/home/dfried/scripts/dual-head.sh")
-        , ((mod4Mask, xK_F11), spawn "/home/dfried/scripts/lab-head.sh")
-        , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/monitor-only.sh")
+        , ((mod4Mask, xK_F9), spawn "/home/dfried/.screenlayout/single_head.sh")
+        , ((mod4Mask, xK_F10), spawn "/home/dfried/.screenlayout/dual_head.sh")
+        -- , ((mod4Mask, xK_F11), spawn "/home/dfried/scripts/lab-head.sh")
+        -- , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/monitor-only.sh")
         , ((mod4Mask, xK_s), spawn "/home/dfried/scripts/screenshot.sh")
         -- deprecatedU
         -- , ((mod4Mask, xK_y), spawn "/home/dfried/scripts/add-modes.sh")
         -- grid select
         , ((mod4Mask, xK_g), goToSelected defaultGSConfig)
-        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "vlc", "firefox", "gvim", "mysql-query-browser", "gnome-calculator"])
+        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "firefox", "gnome-calculator"])
         , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["~/scripts/uawifi", "~/scripts/uapublic", "~/scripts/zdm"])
+        , ((mod4Mask, xK_d), spawnSelected defaultGSConfig ["dropbox start", "dropbox stop"])
         -- cycle ws
         , ((mod4Mask, xK_minus), toggleWS)
+        -- prompts
+        , ((mod4Mask, xK_r), windowPromptGoto myXPConfig)
+        , ((mod4Mask, xK_p), shellPrompt myXPConfig)
+        -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
+        , ((mod4Mask, xK_c), scratchpadSpawnActionCustom "gnome-terminal --disable-factory --name scratchpad")
         ]
 
 dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"

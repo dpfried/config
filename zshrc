@@ -26,7 +26,7 @@ DISABLE_UPDATE_PROMPT="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python svn extract rails rails3 rvm ruby vi-mode virtualenvwrapper)
+plugins=(django heroku git python svn extract rails rails3 rvm ruby vi-mode virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh-aliases
@@ -45,3 +45,5 @@ export LESS=' -R '
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PYTHONPATH=$PATH:/home/$USER/.local
+
+autoload zmv
