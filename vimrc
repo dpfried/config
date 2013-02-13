@@ -32,6 +32,9 @@ Bundle 'tpope/vim-git'
 Bundle 'klen/python-mode'
 Bundle 'jmcantrell/vim-virtualenv'
 "Bundle 'mitechie/pyflakes-pathogen'
+Bundle 'ivanov/vim-ipython'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-afterimage'
 
 " python-mode
 let g:pymode_folding = 0
@@ -258,3 +261,5 @@ imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
 "
 " turn off toolbar in gvim
 :set guioptions-=T
+
+:set guifont=Envy\ Code\ R\ for\ Powerline\ 10

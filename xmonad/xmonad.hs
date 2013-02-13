@@ -112,8 +112,8 @@ main = do
         -- , ((mod4Mask, xK_y), spawn "/home/dfried/scripts/add-modes.sh")
         -- grid select
         , ((mod4Mask, xK_g), goToSelected defaultGSConfig)
-        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "firefox", "gnome-calculator"])
-        , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["~/scripts/uawifi", "~/scripts/uapublic", "~/scripts/zdm"])
+        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "firefox", "gnome-calculator", "gvim"])
+        , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["nmcli nm enable false", "nmcli nm enable true"])
         , ((mod4Mask, xK_d), spawnSelected defaultGSConfig ["dropbox start", "dropbox stop"])
         -- cycle ws
         , ((mod4Mask, xK_minus), toggleWS)
