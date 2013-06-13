@@ -1,3 +1,7 @@
+" pathogen "
+" call pathogen#infect()
+" call pathogen#helptags()
+ 
 " vundle
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
