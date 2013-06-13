@@ -35,6 +35,9 @@ Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ivanov/vim-ipython'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-afterimage'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'vimez/vim-showmarks.git'
+Bundle 'rbgrouleff/bclose.vim'
 
 " python-mode
 let g:pymode_folding = 0
@@ -118,8 +121,10 @@ if has("autocmd")
                     \ if line("'\"") > 1 && line("'\"") <= line("$") |
                     \   exe "normal! g`\"" |
                     \ endif
-
     augroup END
+    " scheme
+    au BufReadPost *.scheme,*.sc set filetype=scheme
+
 
 else
     set autoindent		" always set autoindenting on
@@ -189,7 +194,6 @@ inoremap {{     {
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 "let g:EclimBrowser='xdg-open'
 "let TList_WinWidth = 50
-"map <F2> <ESC>:JavaCorrect<cr>
 "map <F3> <ESC>:JavaImportMissing<cr>:JavaImportClean<cr>
 "map <F4> <ESC>:TlistToggle<CR>
 "map <F5> <ESC>:JavaSearch<CR>
@@ -198,6 +202,8 @@ inoremap {{     {
 "map <F8> <ESC>:JavaSearchContext<CR>
 "map <F9> <ESC>:Java<CR>
 "nnoremap <F11> <ESC>:Validate<cr>
+map <F2> <ESC>:JavaCorrect<cr>
+map <F3> <ESC>:JavaSearchContext<CR>
 
 " settings for exuberant ctags "
 set tags=tags;/
@@ -209,10 +215,6 @@ set ttyfast                   " send more characters
 
 set wildmenu
 set wildmode=list:longest,full
-
-" colors
-set t_Co=256
-colorscheme molokai
 
 " enhanced movement
 map <C-j> 8j
@@ -262,4 +264,9 @@ imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
 " turn off toolbar in gvim
 :set guioptions-=T
 
-:set guifont=Envy\ Code\ R\ for\ Powerline\ 10
+:set guifont=Liberation\ Mono\ 10
+
+" colors
+set t_Co=256
+colorscheme molokai
+

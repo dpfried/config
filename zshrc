@@ -60,3 +60,9 @@ source /etc/bash_completion.d/virtualenvwrapper
 # vicare
 export VICARE_LIBRARY_PATH=.:$HOME/vicare/bher:$HOME/vicare/scheme-tools
 export PATH=$HOME/vicare/bher:$PATH
+
+# scala build tool (sbt)
+export PATH=$HOME/sbt/bin:$PATH
+
+# ~/bin
+export PATH=$HOME/bin:$PATH

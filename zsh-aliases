@@ -10,6 +10,7 @@ alias  h='dirs'
 alias gt='gnome-terminal'
 alias ps='ps aux'
 alias nt='ping google.com'
+alias lt='ll -t | less'
 
 # Go up directory tree X number of directories
 function u() {
