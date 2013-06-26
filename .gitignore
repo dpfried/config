@@ -4,7 +4,11 @@ xmonad/xmonad.hi
 xmonad/xmonad.hs~
 xmonad/xmonad.o
 xmonad/xmonad.old
+xmonad/history
+
+vim/eclim
 
 vim/bundle/*
 !vim/bundle/vundle
 vim/.netrwhist
+vim/plugin/eclim.vim
