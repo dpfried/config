@@ -16,7 +16,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'millermedeiros/vim-statline'
 " Bundle 'scrooloose/nerdtree'
 " Bundle 'scrooloose/snipmate-snippets'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
 " Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
@@ -34,13 +34,14 @@ Bundle 'wincent/Command-T'
 
 Bundle 'tpope/vim-git'
 Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
 Bundle 'jmcantrell/vim-virtualenv'
 "Bundle 'mitechie/pyflakes-pathogen'
 " Bundle 'ivanov/vim-ipython'
 Bundle 'tpope/vim-commentary'
 " Bundle 'tpope/vim-afterimage'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'vimez/vim-showmarks.git'
+" Bundle 'vimez/vim-showmarks.git'
 " Bundle 'rbgrouleff/bclose.vim'
 
 " python-mode
@@ -152,7 +153,7 @@ set number
 set wrap!
 
 "Turn on smart indent
-set smartindent
+" set smartindent
 set tabstop=4 "set tab character to 4 characters
 set softtabstop=4 "backspace over 4 characters when at beginning of line"
 set expandtab "turn tabs into whitespace
@@ -227,10 +228,10 @@ map <C-h> 8h
 map <C-l> 8l
 
 " syntastic
-let g:syntastic_auto_loc_list=1
-let g:syntastic_disabled_filetypes=['html', 'tex']
-let g:syntastic_enable_signs=1
-let g:syntastic_python_checker = 'pyflakes'
+" let g:syntastic_auto_loc_list=1
+" let g:syntastic_disabled_filetypes=['html', 'tex']
+" let g:syntastic_enable_signs=1
+" let g:syntastic_python_checker = 'pylint'
 
 " statusline
 "set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -257,7 +258,7 @@ au FileType xml setlocal foldmethod=syntax
 let g:xml_use_xhtml=1
 
 " python stuff
-au FileType python set omnifunc=pythoncomplete#Complete
+" au FileType python set omnifunc=pythoncomplete#Complete
 let ropevim_vim_completion = 1
 let ropevim_extended_complete = 1
 imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
@@ -274,3 +275,5 @@ imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
 set t_Co=256
 colorscheme molokai
 
+let g:pymode_lint_checker='pyflakes'
+let g:pymode_rope = 0
