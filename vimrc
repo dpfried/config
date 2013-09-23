@@ -43,6 +43,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'airblade/vim-gitgutter'
 " Bundle 'vimez/vim-showmarks.git'
 " Bundle 'rbgrouleff/bclose.vim'
+Bundle 'michaeljsmith/vim-indent-object'
 
 " python-mode
 let g:pymode_folding = 0
@@ -277,3 +278,4 @@ colorscheme molokai
 
 let g:pymode_lint_checker='pyflakes'
 let g:pymode_rope = 0
+set shell=/bin/bash
