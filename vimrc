@@ -45,6 +45,8 @@ Bundle 'airblade/vim-gitgutter'
 " Bundle 'rbgrouleff/bclose.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 
+Bundle 'kana/vim-textobj-user'
+Bundle 'rbonvall/vim-textobj-latex'
 " python-mode
 let g:pymode_folding = 0
 let g:pymode_lint_write = 0

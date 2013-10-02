@@ -72,8 +72,19 @@ export PATH=$HOME/bin:$PATH
 # perl
 export PERL5LIB=$HOME/perl5/lib/perl5:$PERL5LIB
 
-bindkey '^R' history-incremental-search-backward
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
 
 export TERM=xterm-256color
 
 export EDITOR=vim
+
+# from chneukirchen.org/blog/category/zsh.html
+# use C-z to resume vim if suspended, even if something's on the command line
+foreground-vi() {
+    fg %vi
+}
+zle -N foreground-vi
+bindkey '^Z' foreground-vi
+
+setopt extended_glob
