@@ -47,6 +47,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 
 Bundle 'kana/vim-textobj-user'
 Bundle 'rbonvall/vim-textobj-latex'
+Bundle 'nvie/vim-flake8'
 " python-mode
 let g:pymode_folding = 0
 let g:pymode_lint_write = 0
@@ -210,8 +211,8 @@ inoremap {{     {
 "map <F8> <ESC>:JavaSearchContext<CR>
 "map <F9> <ESC>:Java<CR>
 "nnoremap <F11> <ESC>:Validate<cr>
-map <F2> <ESC>:JavaCorrect<cr>
-map <F3> <ESC>:JavaSearchContext<CR>
+" map <F2> <ESC>:JavaCorrect<cr>
+" map <F3> <ESC>:JavaSearchContext<CR>
 
 " settings for exuberant ctags "
 set tags=tags;/
@@ -281,3 +282,14 @@ colorscheme molokai
 let g:pymode_lint_checker='pyflakes'
 let g:pymode_rope = 0
 set shell=/bin/bash
+
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+" leader mappings
+nnoremap <leader>w :w<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>l :PyLint<cr>
+nnoremap <leader>p :set paste!<cr>
