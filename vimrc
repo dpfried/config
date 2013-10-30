@@ -277,3 +277,25 @@ colorscheme molokai
 
 let g:pymode_lint_checker='pyflakes'
 let g:pymode_rope = 0
+
+noremap gj j
+noremap gk k
+noremap j gj
+noremap k gk
+
+let g:Softwrapped = 0
+function! ToggleSoftwrap()
+if g:Softwrapped == 0
+    let g:Softwrapped = 1
+    set formatoptions+=l
+    set lbr
+    set wrap
+else
+    let g:Softwrapped = 0
+    set formatoptions-=l
+    set nolbr
+    set nowrap
+endif
+endfunction
+
+noremap <leader>s :call ToggleSoftwrap()<cr>

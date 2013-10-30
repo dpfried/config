@@ -27,9 +27,10 @@ Config { font = "xft:Envy Code R Bold:pixelsize=11"
                 , Run Com "/home/dfried/scripts/shell-fm-playing.sh" [] "shell-fm" 40
                 , Run Com "/home/dfried/scripts/pandora-playing.sh" [] "pandora" 40
                 , Run Com "/home/dfried/scripts/spotify_now_playing.sh" [] "spotify" 40
+                , Run Com "/home/dfried/scripts/read_redshift.sh" [] "redshift" 60
                 ]
                 , sepChar = "%"
                 , alignSep = "}{"
                  -- , template = "%StdinReader% }{ %pandora% %shell-fm% | %dropbox% | %cpu% | %memory% | %battery% | %eth0% | %wlan0% | %wifi% |  %vol% | %date%"
-                 , template = "%StdinReader% }{  %pandora%%shell-fm%%spotify% | %dropbox% | %vol% | %cpu% | %memory% | %batt% | %eth0% | %wlan0% | %wifi% | %date%"
+                 , template = "%StdinReader% }{  %pandora%%shell-fm%%spotify% | %redshift% | %dropbox% | %vol% | %cpu% | %memory% | %batt% | %eth0% | %wlan0% | %wifi% | %date%"
 }

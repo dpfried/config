@@ -67,3 +67,6 @@ export PATH=$HOME/sbt/bin:$PATH
 
 # ~/bin
 export PATH=$HOME/bin:$PATH
+
+# pylearn2
+export PYLEARN2_DATA_PATH=$HOME/pylearn2data
