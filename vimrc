@@ -43,7 +43,11 @@ Bundle 'tpope/vim-commentary'
 Bundle 'airblade/vim-gitgutter'
 " Bundle 'vimez/vim-showmarks.git'
 " Bundle 'rbgrouleff/bclose.vim'
+Bundle 'michaeljsmith/vim-indent-object'
 
+Bundle 'kana/vim-textobj-user'
+Bundle 'rbonvall/vim-textobj-latex'
+Bundle 'nvie/vim-flake8'
 " python-mode
 let g:pymode_folding = 0
 let g:pymode_lint_write = 0
@@ -207,8 +211,8 @@ inoremap {{     {
 "map <F8> <ESC>:JavaSearchContext<CR>
 "map <F9> <ESC>:Java<CR>
 "nnoremap <F11> <ESC>:Validate<cr>
-map <F2> <ESC>:JavaCorrect<cr>
-map <F3> <ESC>:JavaSearchContext<CR>
+" map <F2> <ESC>:JavaCorrect<cr>
+" map <F3> <ESC>:JavaSearchContext<CR>
 
 " settings for exuberant ctags "
 set tags=tags;/
@@ -299,3 +303,11 @@ endif
 endfunction
 
 noremap <leader>s :call ToggleSoftwrap()<cr>
+
+set shell=/bin/bash
+
+" leader mappings
+nnoremap <leader>w :w<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>l :PyLint<cr>
+nnoremap <leader>p :set paste!<cr>

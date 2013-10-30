@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="terminalparty"
+ZSH_THEME="dpf"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -26,7 +26,7 @@ DISABLE_UPDATE_PROMPT="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(django heroku git python svn extract rails rails3 rvm ruby vi-mode virtualenvwrapper)
+plugins=(django heroku git python svn extract vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh-aliases
@@ -56,7 +56,8 @@ export PATH=/home/dfried/scheme-tools/bin:$PATH
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-source /etc/bash_completion.d/virtualenvwrapper
+# source /etc/bash_completion.d/virtualenvwrapper
+source $HOME/.local/bin/virtualenvwrapper.sh
 
 # vicare
 export VICARE_LIBRARY_PATH=.:$HOME/vicare/bher:$HOME/vicare/scheme-tools
@@ -70,3 +71,23 @@ export PATH=$HOME/bin:$PATH
 
 # pylearn2
 export PYLEARN2_DATA_PATH=$HOME/pylearn2data
+#
+# perl
+export PERL5LIB=$HOME/perl5/lib/perl5:$PERL5LIB
+
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+
+export TERM=xterm-256color
+
+export EDITOR=vim
+
+# from chneukirchen.org/blog/category/zsh.html
+# use C-z to resume vim if suspended, even if something's on the command line
+foreground-vi() {
+    fg %vi
+}
+zle -N foreground-vi
+bindkey '^Z' foreground-vi
+
+setopt extended_glob
