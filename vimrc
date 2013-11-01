@@ -119,7 +119,7 @@ if has("autocmd")
         au!
 
         " For all text files set 'textwidth' to 78 characters.
-        autocmd FileType text setlocal textwidth=78
+        " autocmd FileType text setlocal textwidth=78
 
         " When editing a file, always jump to the last known cursor position.
         " Don't do it when the position is invalid or when inside an event handler
@@ -282,10 +282,14 @@ colorscheme molokai
 let g:pymode_lint_checker='pyflakes'
 let g:pymode_rope = 0
 
-noremap gj j
-noremap gk k
 noremap j gj
 noremap k gk
+noremap gj j
+noremap gk k
+" noremap 0 g0
+" noremap $ g$
+" noremap g0 0
+" noremap g$ $
 
 let g:Softwrapped = 0
 function! ToggleSoftwrap()
@@ -309,5 +313,6 @@ set shell=/bin/bash
 " leader mappings
 nnoremap <leader>w :w<cr>
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>l :PyLint<cr>
 nnoremap <leader>p :set paste!<cr>

@@ -57,7 +57,8 @@ export PATH=/home/dfried/scheme-tools/bin:$PATH
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 # source /etc/bash_completion.d/virtualenvwrapper
-source $HOME/.local/bin/virtualenvwrapper.sh
+# source $HOME/.local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 # vicare
 export VICARE_LIBRARY_PATH=.:$HOME/vicare/bher:$HOME/vicare/scheme-tools

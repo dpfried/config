@@ -4,7 +4,7 @@ import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig(additionalKeys, removeKeys)
 import XMonad.Layout.NoBorders
 import System.IO
 import XMonad.Hooks.ManageHelpers
@@ -30,6 +30,10 @@ import XMonad.Prompt.AppendFile
 import XMonad.Prompt.AppLauncher
 import XMonad.Actions.Search
 import XMonad.Util.Scratchpad
+-- sub layouts
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.WindowNavigation
+import XMonad.Layout.BoringWindows
 import Data.Maybe
 
 myManageHook = composeAll
@@ -61,9 +65,11 @@ myXPConfig = amberXPConfig
     { font = "-misc-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
         -- , autoComplete = Just 1000000
 }
+-- myLayout = windowNavigation $ subTabbed $ (mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed )
 
-myLayout = mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed
+myLayout = avoidStruts $ (windowNavigation $ subTabbed $ boringWindows rtall) ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed ||| rtall
     where
+        rtall = mouseResize $ windowArrange $  smartBorders tiled
         tiled = ResizableTall nmaster delta (1/2) []
         myTabbed = tabbed shrinkText dfriedTabConfig 
         nmaster = 1
@@ -130,7 +136,23 @@ main = do
         , ((mod4Mask, xK_e), launchApp myXPConfig "evince")
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
         , ((mod4Mask, xK_c), scratchpadSpawnActionCustom "gnome-terminal --disable-factory --name scratchpad")
-        ]
+        -- groups
+        , ((mod4Mask .|. controlMask, xK_h), sendMessage $ pullGroup L)
+        , ((mod4Mask .|. controlMask, xK_l), sendMessage $ pullGroup R)
+        , ((mod4Mask .|. controlMask, xK_k), sendMessage $ pullGroup U)
+        , ((mod4Mask .|. controlMask, xK_j), sendMessage $ pullGroup D)
+
+        , ((mod4Mask .|. controlMask, xK_m), withFocused (sendMessage . MergeAll))
+        , ((mod4Mask .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
+
+        , ((mod4Mask .|. controlMask, xK_period), onGroup W.focusDown')
+        , ((mod4Mask .|. controlMask, xK_comma), onGroup W.focusUp')
+        , ((mod4Mask, xK_period), XMonad.Layout.BoringWindows.focusDown)
+        , ((mod4Mask, xK_comma), XMonad.Layout.BoringWindows.focusUp)
+
+        ] 
+        -- `removeKeys`
+        --  [(mod4Mask, xK_Tab), (mod4Mask .|. shiftMask, xK_Tab)]
 
 dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
                       , ppVisible = wrap "(" ")"
