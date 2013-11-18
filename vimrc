@@ -25,7 +25,8 @@ Bundle 'tpope/vim-repeat'
 " Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 " Bundle 'vim-scripts/dbext.vim'
-Bundle 'wincent/Command-T'
+" Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 "Bundle 'pangloss/vim-javascript'
 " Bundle 'sukima/xmledit'
 "Bundle 'jcf/vim-latex'
@@ -291,5 +292,9 @@ noremap gk k
 " leader mappings
 nnoremap <leader>w :w<cr>
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>l :PyLint<cr>
 nnoremap <leader>p :set paste!<cr>
+
+" ignore files in dir listings and Command-T
+set wildignore+=*.pyc,*.gz
