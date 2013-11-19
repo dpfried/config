@@ -4,7 +4,7 @@ import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.EZConfig(additionalKeys, removeKeys)
 import XMonad.Layout.NoBorders
 import System.IO
 import XMonad.Hooks.ManageHelpers
@@ -13,7 +13,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.StackTile
 import XMonad.Layout.Tabbed
 import XMonad.Hooks.SetWMName
-import XMonad.Actions.GridSelect
+-- import XMonad.Actions.GridSelect -- this crashes occasionally
 -- for mouse resize
 import XMonad.Actions.MouseResize
 import XMonad.Layout.WindowArranger
@@ -27,14 +27,20 @@ import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Window
 import XMonad.Prompt.AppendFile
+import XMonad.Prompt.AppLauncher
+import XMonad.Actions.Search
 import XMonad.Util.Scratchpad
+-- sub layouts
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.WindowNavigation
+import XMonad.Layout.BoringWindows
+import Data.Maybe
 
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
     , className =? "Vncviewer" --> doFloat
     , className =? "Unity-2d-panel" --> doIgnore
     , className =? "Unity-2d-launcher" --> doFloat
-    , title =? "room_ground_truther" --> doFloat
     ] -- <+> manageScratchPad
 
 myTerminal = "gnome-terminal"
@@ -51,16 +57,19 @@ myStartupHook = do
     spawn "gnome-settings-daemon"
     spawn "pidof nm-applet || nm-applet"
     spawn "gnome-power-manager"
+    spawn "pidof xscreensaver || xscreensaver -no-splash"
+    spawn "~/scripts/redshift.sh"
     setWMName "LG3D"
 
 myXPConfig = amberXPConfig
-    -- XPC { font = "-misc-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
-        -- , bgColor = "#
-                   
--- }
+    { font = "-misc-fixed-*-*-*-*-12-*-*-*-*-*-*-*"
+        -- , autoComplete = Just 1000000
+}
+-- myLayout = windowNavigation $ subTabbed $ (mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed )
 
-myLayout = mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed
+myLayout = avoidStruts $ (windowNavigation $ subTabbed $ boringWindows rtall) ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed ||| rtall
     where
+        rtall = mouseResize $ windowArrange $  smartBorders tiled
         tiled = ResizableTall nmaster delta (1/2) []
         myTabbed = tabbed shrinkText dfriedTabConfig 
         nmaster = 1
@@ -102,7 +111,7 @@ main = do
         , ((mod4Mask, xK_m), spawn "/home/dfried/scripts/start_gnome_panel close")
         , ((mod4Mask, xK_n), spawn "/home/dfried/scripts/start_gnome_panel open")
         -- diisplay cpu temp
-        , ((mod4Mask, xK_F2), spawn "gnome-screensaver-command --lock")
+        , ((mod4Mask, xK_F2), spawn "xscreensaver-command --lock")
         -- monitor commands
         , ((mod4Mask, xK_F9), spawn "/home/dfried/.screenlayout/single_head.sh")
         , ((mod4Mask, xK_F10), spawn "/home/dfried/.screenlayout/dual_head.sh")
@@ -112,18 +121,38 @@ main = do
         -- deprecatedU
         -- , ((mod4Mask, xK_y), spawn "/home/dfried/scripts/add-modes.sh")
         -- grid select
-        , ((mod4Mask, xK_g), goToSelected defaultGSConfig)
-        , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "firefox", "gnome-calculator", "gvim", "evince"])
-        , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["nmcli nm enable false", "nmcli nm enable true"])
-        , ((mod4Mask, xK_d), spawnSelected defaultGSConfig ["dropbox start", "dropbox stop"])
+        -- , ((mod4Mask, xK_g), goToSelected defaultGSConfig)
+        -- , ((mod4Mask, xK_u), spawnSelected defaultGSConfig ["google-chrome", "nautilus", "firefox", "gnome-calculator", "gvim", "evince", "gnome-terminal", "/opt/cisco/anyconnect/bin/vpnui"])
+        -- , ((mod4Mask, xK_i), spawnSelected defaultGSConfig ["nmcli nm enable false", "nmcli nm enable true"])
+        -- , ((mod4Mask, xK_d), spawnSelected defaultGSConfig ["dropbox start", "dropbox stop"])
         -- cycle ws
         , ((mod4Mask, xK_minus), toggleWS)
         -- prompts
         , ((mod4Mask, xK_r), windowPromptGoto myXPConfig)
         , ((mod4Mask, xK_p), shellPrompt myXPConfig)
+        -- , ((mod4Mask, xK_n), launchApp myXPConfig "nautilus")
+        , ((mod4Mask, xK_u), launchApp myXPConfig "google-chrome --new-window")
+        , ((mod4Mask, xK_d), launchApp myXPConfig "dropbox")
+        , ((mod4Mask, xK_e), launchApp myXPConfig "evince")
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
         , ((mod4Mask, xK_c), scratchpadSpawnActionCustom "gnome-terminal --disable-factory --name scratchpad")
-        ]
+        -- groups
+        , ((mod4Mask .|. controlMask, xK_h), sendMessage $ pullGroup L)
+        , ((mod4Mask .|. controlMask, xK_l), sendMessage $ pullGroup R)
+        , ((mod4Mask .|. controlMask, xK_k), sendMessage $ pullGroup U)
+        , ((mod4Mask .|. controlMask, xK_j), sendMessage $ pullGroup D)
+
+        , ((mod4Mask .|. controlMask, xK_m), withFocused (sendMessage . MergeAll))
+        , ((mod4Mask .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
+
+        , ((mod4Mask .|. controlMask, xK_period), onGroup W.focusDown')
+        , ((mod4Mask .|. controlMask, xK_comma), onGroup W.focusUp')
+        , ((mod4Mask, xK_period), XMonad.Layout.BoringWindows.focusDown)
+        , ((mod4Mask, xK_comma), XMonad.Layout.BoringWindows.focusUp)
+
+        ] 
+        -- `removeKeys`
+        --  [(mod4Mask, xK_Tab), (mod4Mask .|. shiftMask, xK_Tab)]
 
 dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
                       , ppVisible = wrap "(" ")"
@@ -138,6 +167,6 @@ dfriedTabConfig = defaultTheme {
 --                                , activeColor = "black"
                                 , inactiveTextColor = "grey"
                                 , activeTextColor = "yellow"
-                                , fontName = "xft:Envy Code R Bold:pixelsize=11"
+                                , fontName = "xft:Envy Code R Bold:pixelsize=10"
                                }
 

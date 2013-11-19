@@ -57,7 +57,8 @@ export PATH=/home/dfried/scheme-tools/bin:$PATH
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 # source /etc/bash_completion.d/virtualenvwrapper
-source $HOME/.local/bin/virtualenvwrapper.sh
+# source $HOME/.local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 # vicare
 export VICARE_LIBRARY_PATH=.:$HOME/vicare/bher:$HOME/vicare/scheme-tools
@@ -69,6 +70,9 @@ export PATH=$HOME/sbt/bin:$PATH
 # ~/bin
 export PATH=$HOME/bin:$PATH
 
+# pylearn2
+export PYLEARN2_DATA_PATH=$HOME/pylearn2data
+#
 # perl
 export PERL5LIB=$HOME/perl5/lib/perl5:$PERL5LIB
 
