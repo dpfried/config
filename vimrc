@@ -320,6 +320,10 @@ set shell=/bin/bash
 " leader mappings
 nnoremap <leader>w :w<cr>
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>l :PyLint<cr>
 nnoremap <leader>p :set paste!<cr>
+
+" ignore files in dir listings and Command-T
+set wildignore+=*.pyc,*.gz
