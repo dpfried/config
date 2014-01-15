@@ -22,6 +22,8 @@ import XMonad.Actions.CycleRecentWS
 import XMonad.Actions.CycleWS
 -- for searching windows
 import XMonad.Actions.WindowGo
+-- for Java swing
+import XMonad.Hooks.ICCCMFocus
 -- prompt
 import XMonad.Prompt
 import XMonad.Prompt.Shell
@@ -32,8 +34,11 @@ import XMonad.Actions.Search
 import XMonad.Util.Scratchpad
 -- sub layouts
 import XMonad.Layout.SubLayouts
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.BoringWindows
+import XMonad.Layout.Simplest(Simplest(..))
+import XMonad.Util.Themes
 import Data.Maybe
 
 myManageHook = composeAll
@@ -58,7 +63,7 @@ myStartupHook = do
     spawn "pidof nm-applet || nm-applet"
     spawn "gnome-power-manager"
     spawn "pidof xscreensaver || xscreensaver -no-splash"
-    spawn "~/scripts/redshift.sh"
+    -- spawn "~/scripts/redshift.sh"
     setWMName "LG3D"
 
 myXPConfig = amberXPConfig
@@ -67,13 +72,14 @@ myXPConfig = amberXPConfig
 }
 -- myLayout = windowNavigation $ subTabbed $ (mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed )
 
-myLayout = avoidStruts $ (windowNavigation $ subTabbed $ boringWindows rtall) ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed ||| rtall
+myLayout = avoidStruts $ (windowNavigation $ mysubTabbed' $ boringWindows rtall) ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed -- ||| fullscreenFull Full
     where
         rtall = mouseResize $ windowArrange $  smartBorders tiled
         tiled = ResizableTall nmaster delta (1/2) []
         myTabbed = tabbed shrinkText dfriedTabConfig 
         nmaster = 1
         delta = 0.03
+        mysubTabbed' x = addTabs shrinkText dfriedTabConfig $ subLayout [] Simplest x
 
 main = do
     xmproc <- spawnPipe "xmobar"
@@ -90,6 +96,7 @@ main = do
         , layoutHook = myLayout -- avoidStruts $ Grid -- ||| MirrorTall ||| Tall --layoutHook defaultConfig
         , startupHook = myStartupHook
         , logHook = dynamicLogWithPP $ dfriedPP { ppOutput = hPutStrLn xmproc }
+        -- , logHook = takeTopFocus
 --        , logHook = dynamicLogWithPP $ xmobarPP
 --                        { ppOutput = hPutStrLn xmproc
 --                        , ppTitle = xmobarColor "green" "" . shorten 50
@@ -115,9 +122,10 @@ main = do
         -- monitor commands
         , ((mod4Mask, xK_F9), spawn "/home/dfried/.screenlayout/single_head.sh")
         , ((mod4Mask, xK_F10), spawn "/home/dfried/.screenlayout/dual_head.sh")
-        -- , ((mod4Mask, xK_F11), spawn "/home/dfried/scripts/lab-head.sh")
-        -- , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/monitor-only.sh")
+        , ((mod4Mask, xK_F11), spawn "/home/dfried/scripts/lab-head.sh")
+        , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/monitor-only.sh")
         , ((mod4Mask, xK_s), spawn "/home/dfried/scripts/screenshot.sh")
+        , ((mod4Mask, xK_b), sendMessage ToggleStruts)
         -- deprecatedU
         -- , ((mod4Mask, xK_y), spawn "/home/dfried/scripts/add-modes.sh")
         -- grid select
@@ -133,7 +141,7 @@ main = do
         -- , ((mod4Mask, xK_n), launchApp myXPConfig "nautilus")
         , ((mod4Mask, xK_u), launchApp myXPConfig "google-chrome --new-window")
         , ((mod4Mask, xK_d), launchApp myXPConfig "dropbox")
-        , ((mod4Mask, xK_e), launchApp myXPConfig "evince")
+        -- , ((mod4Mask, xK_e), launchApp myXPConfig "evince")
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
         , ((mod4Mask, xK_c), scratchpadSpawnActionCustom "gnome-terminal --disable-factory --name scratchpad")
         -- groups
@@ -145,10 +153,12 @@ main = do
         , ((mod4Mask .|. controlMask, xK_m), withFocused (sendMessage . MergeAll))
         , ((mod4Mask .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
 
-        , ((mod4Mask .|. controlMask, xK_period), onGroup W.focusDown')
-        , ((mod4Mask .|. controlMask, xK_comma), onGroup W.focusUp')
+        , ((mod4Mask .|. shiftMask, xK_period), onGroup W.focusDown')
+        , ((mod4Mask .|. shiftMask, xK_comma), onGroup W.focusUp')
         , ((mod4Mask, xK_period), XMonad.Layout.BoringWindows.focusDown)
         , ((mod4Mask, xK_comma), XMonad.Layout.BoringWindows.focusUp)
+        -- since xmonad ignores WM_TAKE_FOCUS
+        , ((mod4Mask, xK_o), takeTopFocus)
 
         ] 
         -- `removeKeys`

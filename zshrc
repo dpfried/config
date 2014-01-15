@@ -44,7 +44,7 @@ export LESS=' -R '
 [[ -f "/opt/ros/electric/setup.zsh" ]] && source /opt/ros/electric/setup.zsh
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PYTHONPATH=$PATH:$HOME/.local
+# export PYTHONPATH=$PATH:$HOME/.local
 
 autoload zmv
 
@@ -65,7 +65,7 @@ export VICARE_LIBRARY_PATH=.:$HOME/vicare/bher:$HOME/vicare/scheme-tools
 export PATH=$HOME/vicare/bher:$PATH
 
 # scala build tool (sbt)
-export PATH=$HOME/sbt/bin:$PATH
+# export PATH=$HOME/sbt/bin:$PATH
 
 # ~/bin
 export PATH=$HOME/bin:$PATH
@@ -92,3 +92,7 @@ zle -N foreground-vi
 bindkey '^Z' foreground-vi
 
 setopt extended_glob
+
+export IDEA_JDK=/home/dfried/jdk1.7.0_45/
+
+alias sbt='/home/dfried/bin/sbt -java-home /home/dfried/jdk1.7.0_45/'

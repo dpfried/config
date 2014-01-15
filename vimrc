@@ -25,7 +25,8 @@ Bundle 'tpope/vim-repeat'
 " Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 " Bundle 'vim-scripts/dbext.vim'
-Bundle 'wincent/Command-T'
+" Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 "Bundle 'pangloss/vim-javascript'
 " Bundle 'sukima/xmledit'
 "Bundle 'jcf/vim-latex'
@@ -45,9 +46,13 @@ Bundle 'airblade/vim-gitgutter'
 " Bundle 'rbgrouleff/bclose.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 
+Bundle 'junegunn/seoul256.vim'
+
 Bundle 'kana/vim-textobj-user'
 Bundle 'rbonvall/vim-textobj-latex'
 Bundle 'nvie/vim-flake8'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'ktvoelker/sbt-vim'
 " python-mode
 let g:pymode_folding = 0
 let g:pymode_lint_write = 0
@@ -277,7 +282,9 @@ imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " colors
 set t_Co=256
-colorscheme molokai
+" colorscheme molokai
+let g:seoul256_background = 235
+colo seoul256
 
 let g:pymode_lint_checker='pyflakes'
 let g:pymode_rope = 0
