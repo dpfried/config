@@ -27,7 +27,7 @@ Bundle 'tpope/vim-surround'
 " Bundle 'vim-scripts/dbext.vim'
 " Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'pangloss/vim-javascript'
+Bundle 'pangloss/vim-javascript'
 " Bundle 'sukima/xmledit'
 "Bundle 'jcf/vim-latex'
 " Bundle 'derekwyatt/vim-scala'
@@ -49,10 +49,11 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'junegunn/seoul256.vim'
 
 Bundle 'kana/vim-textobj-user'
-Bundle 'rbonvall/vim-textobj-latex'
+" Bundle 'rbonvall/vim-textobj-latex'
 Bundle 'nvie/vim-flake8'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'ktvoelker/sbt-vim'
+Bundle 'junegunn/vim-easy-align'
 " python-mode
 let g:pymode_folding = 0
 let g:pymode_lint_write = 0
@@ -268,9 +269,9 @@ let g:xml_use_xhtml=1
 
 " python stuff
 " au FileType python set omnifunc=pythoncomplete#Complete
-let ropevim_vim_completion = 1
-let ropevim_extended_complete = 1
-imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
+" let ropevim_vim_completion = 1
+" let ropevim_extended_complete = 1
+" imap <Nul> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " pydoc command to use virtualenv
 " let g:pydoc_cmd = '~/py/bin/python -m pydoc'
@@ -322,8 +323,10 @@ nnoremap <leader>w :w<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gp :Git push<cr>
-nnoremap <leader>l :PyLint<cr>
+nnoremap <leader>l :PymodeLint<cr>
 nnoremap <leader>p :set paste!<cr>
 
 " ignore files in dir listings and Command-T
 set wildignore+=*.pyc,*.gz
+
+let g:gitgutter_max_signs=1000

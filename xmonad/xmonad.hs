@@ -108,21 +108,23 @@ main = do
         -- XF86AudioMute
         --, ((0, 0x1008ff12), spawn "/home/dfried/scripts/toggle_mute.sh")
         -- XF86AudioLowerVolume
-        --, ((0, 0x1008ff11), spawn "amixer set Master 5%-")
+        , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
         -- XF86AudioRaiseVolumer 
-        --, ((0, 0x1008ff13), spawn "amixer set Master 5%+")
+        , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
        -- XF86 Suspend
         , ((0, 0x1008ffa7), spawn "home/dfried/scripts/suspend.sh") 
         -- alternate suspend
         , ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
-        , ((mod4Mask, xK_m), spawn "/home/dfried/scripts/start_gnome_panel close")
-        , ((mod4Mask, xK_n), spawn "/home/dfried/scripts/start_gnome_panel open")
+        , ((mod4Mask, xK_F5), spawn "/home/dfried/scripts/start_gnome_panel open")
+        , ((mod4Mask, xK_F6), spawn "/home/dfried/scripts/start_gnome_panel close")
+        , ((mod4Mask, xK_m), spawn "nmcli nm enable false")
+        , ((mod4Mask, xK_n), spawn "nmcli nm enable true")
         -- diisplay cpu temp
         , ((mod4Mask, xK_F2), spawn "xscreensaver-command --lock")
         -- monitor commands
         , ((mod4Mask, xK_F9), spawn "/home/dfried/.screenlayout/single_head.sh")
         , ((mod4Mask, xK_F10), spawn "/home/dfried/.screenlayout/dual_head.sh")
-        , ((mod4Mask, xK_F11), spawn "/home/dfried/scripts/lab-head.sh")
+        , ((mod4Mask, xK_F11), spawn "/home/dfried/.screenlayout/hp.sh")
         , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/monitor-only.sh")
         , ((mod4Mask, xK_s), spawn "/home/dfried/scripts/screenshot.sh")
         , ((mod4Mask, xK_b), sendMessage ToggleStruts)
@@ -137,9 +139,9 @@ main = do
         , ((mod4Mask, xK_minus), toggleWS)
         -- prompts
         , ((mod4Mask, xK_r), windowPromptGoto myXPConfig)
-        , ((mod4Mask, xK_p), shellPrompt myXPConfig)
+        , ((mod4Mask, xK_i), shellPrompt myXPConfig)
         -- , ((mod4Mask, xK_n), launchApp myXPConfig "nautilus")
-        , ((mod4Mask, xK_u), launchApp myXPConfig "google-chrome --new-window")
+        , ((mod4Mask, xK_u), spawn "firefox")
         , ((mod4Mask, xK_d), launchApp myXPConfig "dropbox")
         -- , ((mod4Mask, xK_e), launchApp myXPConfig "evince")
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
@@ -171,8 +173,10 @@ dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
 }
 
 dfriedTabConfig = defaultTheme { 
-                                  inactiveColor = "#121212"
-                                , activeColor = "#121212"
+                                  --inactiveColor = "#121212"
+                                --, activeColor = "#121212"
+                                inactiveColor = "black"
+                                , activeColor = "black"
 --                                  inactiveColor = "black"
 --                                , activeColor = "black"
                                 , inactiveTextColor = "grey"

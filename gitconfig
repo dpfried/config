@@ -5,8 +5,8 @@
 	co = checkout
     d = difftool
 [diff]
-    tool = vimdiff
+	tool = vimdiff
 [difftool]
-    prompt = false
+	prompt = false
 [push]
 	default = tracking
