@@ -120,7 +120,8 @@ main = do
         , ((mod4Mask, xK_m), spawn "nmcli nm enable false")
         , ((mod4Mask, xK_n), spawn "nmcli nm enable true")
         -- diisplay cpu temp
-        , ((mod4Mask, xK_F2), spawn "xscreensaver-command --lock")
+        -- , ((mod4Mask, xK_F2), spawn "xscreensaver-command --lock")
+        , ((mod4Mask, xK_F2), spawn "gnome-screensaver-command --lock")
         -- monitor commands
         , ((mod4Mask, xK_F9), spawn "/home/dfried/.screenlayout/single_head.sh")
         , ((mod4Mask, xK_F10), spawn "/home/dfried/.screenlayout/dual_head.sh")
@@ -141,7 +142,7 @@ main = do
         , ((mod4Mask, xK_r), windowPromptGoto myXPConfig)
         , ((mod4Mask, xK_i), shellPrompt myXPConfig)
         -- , ((mod4Mask, xK_n), launchApp myXPConfig "nautilus")
-        , ((mod4Mask, xK_u), spawn "firefox")
+        , ((mod4Mask, xK_u), spawn "google-chrome")
         , ((mod4Mask, xK_d), launchApp myXPConfig "dropbox")
         -- , ((mod4Mask, xK_e), launchApp myXPConfig "evince")
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")

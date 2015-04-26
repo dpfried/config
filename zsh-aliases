@@ -47,5 +47,7 @@ function ccat() {
     done
 }
 
-alias android-connect="mtpfs -o allow_other /media/motog/"
-alias android-disconnect="fusermount -u /media/motog"
+#alias android-connect="mtpfs -o allow_other /media/motog/"
+#alias android-disconnect="fusermount -u /media/motog"
+alias android-connect="go-mtpfs /media/MyAndroid/"
+alias android-disconnect="fusermount -u /media/MyAndroid"
