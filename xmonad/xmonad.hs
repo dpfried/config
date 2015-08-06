@@ -106,7 +106,7 @@ main = do
         [ ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
         -- XF86AudioMute
-        --, ((0, 0x1008ff12), spawn "/home/dfried/scripts/toggle_mute.sh")
+        , ((0, 0x1008ff12), spawn "/home/dfried/scripts/toggle_mute.sh")
         -- XF86AudioLowerVolume
         , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
         -- XF86AudioRaiseVolumer 
@@ -123,9 +123,9 @@ main = do
         -- , ((mod4Mask, xK_F2), spawn "xscreensaver-command --lock")
         , ((mod4Mask, xK_F2), spawn "gnome-screensaver-command --lock")
         -- monitor commands
-        , ((mod4Mask, xK_F9), spawn "/home/dfried/.screenlayout/single_head.sh")
-        , ((mod4Mask, xK_F10), spawn "/home/dfried/.screenlayout/dual_head.sh")
-        , ((mod4Mask, xK_F11), spawn "/home/dfried/.screenlayout/hp.sh")
+        , ((mod4Mask, xK_F9), spawn "/home/dfried/scripts/single-head.sh")
+        , ((mod4Mask, xK_F10), spawn "/home/dfried/scripts/dual-head.sh")
+        , ((mod4Mask, xK_F11), spawn "/home/dfried/scripts/lab-head.sh")
         , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/monitor-only.sh")
         , ((mod4Mask, xK_s), spawn "/home/dfried/scripts/screenshot.sh")
         , ((mod4Mask, xK_b), sendMessage ToggleStruts)
