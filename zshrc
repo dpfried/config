@@ -93,6 +93,6 @@ bindkey '^Z' foreground-vi
 
 setopt extended_glob
 
-export IDEA_JDK=/home/dfried/jdk1.7.0_45/
+export IDEA_JDK=/usr/lib/jvm/java-1.6.0-openjdk-amd64/
 
-alias sbt='/home/dfried/bin/sbt -java-home /home/dfried/jdk1.7.0_45/'
+alias sbt='/home/dfried/bin/sbt -java-home /home/dfried/jdk1.7.0_51/'
