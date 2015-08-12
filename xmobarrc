@@ -4,11 +4,17 @@ Config { font = "xft:Envy Code R Bold:pixelsize=11"
          -- , bgColor = "#1E2340"
         --, bgColor = "#400000"
         , fgColor = "grey"
-        , position = TopW L 100
-        , lowerOnStart = False
+        , position = TopW L 96
+         lowerOnStart = False
         , commands = [ 
-        Run Network "wlan0" ["-L","0","-H","32","--normal","grey","--high","white"] 10 ,
-          Run Network "eth0" ["-L","0","-H","32","--normal","grey","--high","white"] 10
+        -- Run Network "wlan0" ["-L","0","-H","32","--normal","grey","--high","white"] 10 ,
+          -- Run Network "eth0" ["-L","0","-H","32","--normal","grey","--high","white"] 10
+          Run DynNetwork [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
+                             , "--Low"      , "1000"       -- units: kB/s
+                             , "--High"     , "5000"       -- units: kB/s
+                             , "--normal"   , "grey"
+                             , "--high"     , "white"
+                             ] 10
  --       Run Network "wlan0" ["-L","0","-H","32","--normal","red","--high","red"] 10 ,
  --           Run Network "eth0" ["-L","0","-H","32","--normal","red","--high","red"] 10
                 , Run Cpu ["-L","15","-H","50","--normal","grey","--high","white"] 10
@@ -32,5 +38,5 @@ Config { font = "xft:Envy Code R Bold:pixelsize=11"
                 , sepChar = "%"
                 , alignSep = "}{"
                  -- , template = "%StdinReader% }{ %pandora% %shell-fm% | %dropbox% | %cpu% | %memory% | %battery% | %eth0% | %wlan0% | %wifi% |  %vol% | %date%"
-                 , template = "%StdinReader% }{ %pandora%%spotify% | %dropbox% | %vol% | %cpu% | %memory% | %batt% | %eth0% | %wlan0% | %wifi% | %date%"
+                 , template = "%StdinReader% }{ %pandora%%spotify% | %dropbox% | %vol% | %cpu% | %memory% | %batt% | %dynnetwork% | %wifi% | %date%"
 }

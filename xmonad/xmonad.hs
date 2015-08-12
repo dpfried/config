@@ -58,6 +58,7 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
         l = 1 - w -- distance from left edge, 0%
 
 myStartupHook = do
+    spawn "pidof stalonetray || stalonetray --icon-gravity E --geometry 2x1-0+0 --max-geometry 2x1-0+0 --background '#121212' --skip-taskbar --icon-size 18 --kludges force_icons_size --window-strut none"
 --    spawn "trayer --SetDockType true --SetPartialStrut true"
     spawn "gnome-settings-daemon"
     spawn "pidof nm-applet || nm-applet"
