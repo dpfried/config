@@ -58,10 +58,15 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
         l = 1 - w -- distance from left edge, 0%
 
 myStartupHook = do
-    spawn "pidof stalonetray || stalonetray --icon-gravity E --geometry 2x1-0+0 --max-geometry 2x1-0+0 --background '#121212' --skip-taskbar --icon-size 18 --kludges force_icons_size --window-strut none"
+    -- spawn "pidof stalonetray || stalonetray --icon-gravity E --geometry 2x1-0+0 --max-geometry 2x1-0+0 --background '#121212' --skip-taskbar --icon-size 18 --kludges force_icons_size --window-strut none"
+    spawn "pidof stalonetray || stalonetray"
 --    spawn "trayer --SetDockType true --SetPartialStrut true"
-    spawn "gnome-settings-daemon"
+    spawn "pidof polkit-gnome-authentication-agent-1 || /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1"
+    spawn "pidof gnome-settings-daemon || gnome-settings-daemon"
     spawn "pidof nm-applet || nm-applet"
+    spawn "gsettings reset org.gnome.settings-daemon.plugins.media-keys volume-mute"
+    spawn "gsettings reset org.gnome.settings-daemon.plugins.media-keys volume-down"
+    spawn "gsettings reset org.gnome.settings-daemon.plugins.media-keys volume-up"
     spawn "gnome-power-manager"
     spawn "pidof xscreensaver || xscreensaver -no-splash"
     -- spawn "~/scripts/redshift.sh"
@@ -87,10 +92,11 @@ main = do
     --xmproc <- spawnPipe "echo"
     xmonad $ defaultConfig
         { terminal = myTerminal
-        ,borderWidth = 2
-        --,normalBorderColor = "#1E2340"
-        ,normalBorderColor = "#121212"
+        ,borderWidth = 4
+        ,normalBorderColor = "#1E2340"
+        -- ,normalBorderColor = "#121212"
         ,focusedBorderColor = "yellow"
+        --,focusedBorderColor = "#99CCFF"
         ,modMask = mod4Mask
         ,manageHook = manageDocks <+> myManageHook -- make sure to include myManageHook definition from above
                         <+> manageHook defaultConfig
@@ -104,18 +110,18 @@ main = do
 --                       }
         } `additionalKeys`
         -- screenshots
-        [ ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-        , ((0, xK_Print), spawn "scrot")
+        [ -- ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+        -- , ((0, xK_Print), spawn "scrot")
         -- XF86AudioMute
-        , ((0, 0x1008ff12), spawn "/home/dfried/scripts/toggle_mute.sh")
+        -- , ((0, 0x1008ff12), spawn "/home/dfried/scripts/toggle_mute.sh")
         -- XF86AudioLowerVolume
-        , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
+        -- , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
         -- XF86AudioRaiseVolumer 
-        , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
+        -- , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
        -- XF86 Suspend
-        , ((0, 0x1008ffa7), spawn "home/dfried/scripts/suspend.sh") 
+        -- , ((0, 0x1008ffa7), spawn "home/dfried/scripts/suspend.sh") 
         -- alternate suspend
-        , ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
+        ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
         , ((mod4Mask, xK_F5), spawn "/home/dfried/scripts/start_gnome_panel open")
         , ((mod4Mask, xK_F6), spawn "/home/dfried/scripts/start_gnome_panel close")
         , ((mod4Mask, xK_m), spawn "nmcli nm enable false")
@@ -127,7 +133,7 @@ main = do
         , ((mod4Mask, xK_F9), spawn "/home/dfried/scripts/single-head.sh")
         , ((mod4Mask, xK_F10), spawn "/home/dfried/scripts/dual-head.sh")
         , ((mod4Mask, xK_F11), spawn "/home/dfried/scripts/lab-head.sh")
-        , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/monitor-only.sh")
+        , ((mod4Mask, xK_F12), spawn "/home/dfried/scripts/ext-monitor.sh")
         , ((mod4Mask, xK_s), spawn "/home/dfried/scripts/screenshot.sh")
         , ((mod4Mask, xK_b), sendMessage ToggleStruts)
         -- deprecatedU
@@ -144,6 +150,7 @@ main = do
         , ((mod4Mask, xK_i), shellPrompt myXPConfig)
         -- , ((mod4Mask, xK_n), launchApp myXPConfig "nautilus")
         , ((mod4Mask, xK_u), spawn "google-chrome")
+        -- , ((mod4Mask, xK_u), spawn "firefox")
         , ((mod4Mask, xK_d), launchApp myXPConfig "dropbox")
         -- , ((mod4Mask, xK_e), launchApp myXPConfig "evince")
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
@@ -170,7 +177,7 @@ main = do
 
 dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
                       , ppVisible = wrap "(" ")"
-                      , ppUrgent = xmobarColor "red" "yellow"
+                      , ppUrgent = xmobarColor "red" "white"
                       , ppTitle = xmobarColor "white" "" . shorten 60
 }
 
@@ -182,7 +189,7 @@ dfriedTabConfig = defaultTheme {
 --                                  inactiveColor = "black"
 --                                , activeColor = "black"
                                 , inactiveTextColor = "grey"
-                                , activeTextColor = "yellow"
+                                , activeTextColor = "white"
                                 , fontName = "xft:Envy Code R Bold:pixelsize=10"
                                }
 

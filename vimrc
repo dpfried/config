@@ -54,9 +54,9 @@ Bundle 'nvie/vim-flake8'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'ktvoelker/sbt-vim'
 Bundle 'junegunn/vim-easy-align'
-" python-mode
-let g:pymode_folding = 0
-let g:pymode_lint_write = 0
+Bundle 'lervag/vimtex'
+" Bundle 'Valloric/YouCompleteMe'
+Bundle 'powerman/vim-plugin-AnsiEsc'
 
 " Keep all swap files together
 set swapfile
@@ -286,9 +286,7 @@ set t_Co=256
 " colorscheme molokai
 let g:seoul256_background = 235
 colo seoul256
-
-let g:pymode_lint_checker='pyflakes'
-let g:pymode_rope = 0
+" colo peaksea
 
 noremap j gj
 noremap k gk
@@ -330,3 +328,20 @@ nnoremap <leader>p :set paste!<cr>
 set wildignore+=*.pyc,*.gz
 
 let g:gitgutter_max_signs=1000
+
+" python options
+" let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_select_first = 0
+set completeopt=menuone
+let g:pymode_folding = 0
+let g:pymode_lint_write = 0
+let g:pymode_lint_sort = ['E', 'C', 'I']
+let g:pymode_lint_ignore = 'E501'
+let g:pymode_lint_checker='pyflakes'
+let g:pymode_rope = 0
+
+au BufNewFile,BufRead *.scl set filetype=scala
+
+" let g:vimtex_latexmk_enabled = 1
+" let g:vimtex_latexmk_callback = 0
+let g:vimtex_view_method = 'zathura'

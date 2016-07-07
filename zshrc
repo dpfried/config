@@ -5,7 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="dpf"
+#ZSH_THEME="dpf"
+#ZSH_THEME="terminalparty"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -58,7 +59,7 @@ export PATH=/home/dfried/scheme-tools/bin:$PATH
 export WORKON_HOME=$HOME/.virtualenvs
 # source /etc/bash_completion.d/virtualenvwrapper
 # source $HOME/.local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # vicare
 export VICARE_LIBRARY_PATH=.:$HOME/vicare/bher:$HOME/vicare/scheme-tools
@@ -95,4 +96,21 @@ setopt extended_glob
 
 export IDEA_JDK=/usr/lib/jvm/java-1.6.0-openjdk-amd64/
 
-alias sbt='/home/dfried/bin/sbt -java-home /home/dfried/jdk1.7.0_51/'
+#alias sbt='JAVA_HOME=/home/dfried/jdk1.8.0_60 sbt'
+
+alias sbt='/home/dfried/bin/sbt -java-home /home/dfried/jdk1.8.0_60/'
+
+# theme modified from terminal party
+PROMPT='%{$fg[red]%}%(1j.[%j].)%{$fg[green]%} %% '
+# RPS1='%{$fg[blue]%}%~%{$reset_color%} '
+RPS1='%{$fg[white]%}%2~$(git_prompt_info) %{$fg_bold[green]%}%* %{$fg_bold[blue]%}%m%{$reset_color%}'
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[yellow]%}("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ⚡%{$fg[yellow]%}"
+
+export LD_LIBRARY_PATH=/home/dfried/coursework/287/ec4/EC4-PS-starter/mujoco_linux:$LD_LIBRARY_PATH
+
+# added by Anaconda3 4.0.0 installer
+# export PATH="/home/dfried/anaconda3/bin:$PATH"
