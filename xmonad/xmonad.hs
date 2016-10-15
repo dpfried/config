@@ -41,6 +41,9 @@ import XMonad.Layout.Simplest(Simplest(..))
 import XMonad.Util.Themes
 import Data.Maybe
 
+-- workspace names
+import XMonad.Actions.WorkspaceNames
+
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
     , className =? "Vncviewer" --> doFloat
@@ -87,6 +90,7 @@ myLayout = avoidStruts $ (windowNavigation $ mysubTabbed' $ boringWindows rtall)
         delta = 0.03
         mysubTabbed' x = addTabs shrinkText dfriedTabConfig $ subLayout [] Simplest x
 
+
 main = do
     xmproc <- spawnPipe "xmobar"
     --xmproc <- spawnPipe "echo"
@@ -102,7 +106,8 @@ main = do
                         <+> manageHook defaultConfig
         , layoutHook = myLayout -- avoidStruts $ Grid -- ||| MirrorTall ||| Tall --layoutHook defaultConfig
         , startupHook = myStartupHook
-        , logHook = dynamicLogWithPP $ dfriedPP { ppOutput = hPutStrLn xmproc }
+        -- logHook = dynamicLogWithPP $ dfriedPP { ppOutput = hPutStrLn xmproc }
+        , logHook = workspaceNamesPP dfriedPP { ppOutput = hPutStrLn xmproc } >>= dynamicLogWithPP
         -- , logHook = takeTopFocus
 --        , logHook = dynamicLogWithPP $ xmobarPP
 --                        { ppOutput = hPutStrLn xmproc
@@ -149,14 +154,13 @@ main = do
         , ((mod4Mask, xK_r), windowPromptGoto myXPConfig)
         , ((mod4Mask, xK_i), shellPrompt myXPConfig)
         -- , ((mod4Mask, xK_n), launchApp myXPConfig "nautilus")
-        , ((mod4Mask, xK_u), spawn "google-chrome")
+        , ((mod4Mask, xK_u), spawn "google-chrome --disable-gpu")
         -- , ((mod4Mask, xK_u), spawn "firefox")
         , ((mod4Mask, xK_d), launchApp myXPConfig "dropbox")
         -- , ((mod4Mask, xK_e), launchApp myXPConfig "evince")
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
         , ((mod4Mask, xK_c), scratchpadSpawnActionCustom "gnome-terminal --disable-factory --name scratchpad")
         -- groups
-        , ((mod4Mask .|. controlMask, xK_h), sendMessage $ pullGroup L)
         , ((mod4Mask .|. controlMask, xK_l), sendMessage $ pullGroup R)
         , ((mod4Mask .|. controlMask, xK_k), sendMessage $ pullGroup U)
         , ((mod4Mask .|. controlMask, xK_j), sendMessage $ pullGroup D)
@@ -170,6 +174,8 @@ main = do
         , ((mod4Mask, xK_comma), XMonad.Layout.BoringWindows.focusUp)
         -- since xmonad ignores WM_TAKE_FOCUS
         , ((mod4Mask, xK_o), takeTopFocus)
+        --
+        , ((mod4Mask .|. shiftMask , xK_r), renameWorkspace myXPConfig)
 
         ] 
         -- `removeKeys`

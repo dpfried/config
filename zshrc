@@ -25,6 +25,8 @@ COMPLETION_WAITING_DOTS="true"
 
 DISABLE_UPDATE_PROMPT="true"
 
+DISABLE_AUTO_PROMPT=true
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(django heroku git python svn extract vi-mode)
@@ -114,3 +116,6 @@ export LD_LIBRARY_PATH=/home/dfried/coursework/287/ec4/EC4-PS-starter/mujoco_lin
 
 # added by Anaconda3 4.0.0 installer
 # export PATH="/home/dfried/anaconda3/bin:$PATH"
+#
+# added by Anaconda2 4.1.1 installer
+export PATH="/home/dfried/anaconda2/bin:$PATH"

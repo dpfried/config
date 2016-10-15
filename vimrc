@@ -58,6 +58,8 @@ Bundle 'lervag/vimtex'
 " Bundle 'Valloric/YouCompleteMe'
 Bundle 'powerman/vim-plugin-AnsiEsc'
 
+Bundle 'romainl/vim-qf'
+
 " Keep all swap files together
 set swapfile
 set backupdir=~/.vimtmp
