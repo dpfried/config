@@ -3,7 +3,7 @@
 	email = dfried@berkeley.edu
 [alias]
 	co = checkout
-    d = difftool
+  d = difftool
 [diff]
 	tool = vimdiff
 [difftool]
