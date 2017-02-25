@@ -16,3 +16,6 @@ rm ~/.zsh-aliases ; ln -s $DIR/zsh-aliases ~/.zsh-aliases
 rm ~/.zshrc ; ln -s $DIR/zshrc ~/.zshrc
 rm ~/.gitconfig ; ln -s $DIR/gitconfig ~/.gitconfig
 ln -s $DIR/screenrc ~/.screenrc
+
+mkdir ~/.vimtmp
+mkdir ~/.vimswp
