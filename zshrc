@@ -12,7 +12,7 @@ ZSH=$HOME/.oh-my-zsh
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -119,3 +119,12 @@ export LD_LIBRARY_PATH=/home/dfried/coursework/287/ec4/EC4-PS-starter/mujoco_lin
 #
 # added by Anaconda2 4.1.1 installer
 export PATH="/home/dfried/anaconda2/bin:$PATH"
+
+export EIGEN3_INCLUDE_DIR=$HOME/projects/eigen
+
+export LD_PRELOAD=/opt/intel/mkl/lib/intel64/libmkl_def.so:/opt/intel/mkl/lib/intel64/libmkl_avx2.so:/opt/intel/mkl/lib/intel64/libmkl_core.so:/opt/intel/mkl/lib/intel64/libmkl_intel_lp64.so:/opt/intel/mkl/lib/intel64/libmkl_intel_thread.so:/opt/intel/lib/intel64_lin/libiomp5.so:$LD_PRELOAD
+export MKL_NUM_THREADS=4
+
+export LD_LIBRARY_PATH=$HOME/projects/boost_1_60_0/stage/lib:$LD_LIBRARY_PATH
+
+source $HOME/bin/ssh_hpc.sh

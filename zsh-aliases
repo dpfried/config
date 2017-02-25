@@ -51,3 +51,5 @@ function ccat() {
 #alias android-disconnect="fusermount -u /media/motog"
 alias android-connect="go-mtpfs /media/MyAndroid/"
 alias android-disconnect="fusermount -u /media/MyAndroid"
+
+alias gvim="gvim > /dev/null 2> /dev/null"

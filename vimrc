@@ -60,6 +60,8 @@ Bundle 'powerman/vim-plugin-AnsiEsc'
 
 Bundle 'romainl/vim-qf'
 
+Bundle 'AndrewRadev/linediff.vim'
+
 " Keep all swap files together
 set swapfile
 set backupdir=~/.vimtmp
@@ -166,10 +168,10 @@ set wrap!
 
 "Turn on smart indent
 " set smartindent
-set tabstop=4 "set tab character to 4 characters
+"set tabstop=4 "set tab character to 4 characters
 set softtabstop=4 "backspace over 4 characters when at beginning of line"
 set expandtab "turn tabs into whitespace
-set shiftwidth=4 "indent width for autoindent
+"set shiftwidth=4 "indent width for autoindent
 filetype indent on "indent depends on filetype
 
 "Turn on incremental search with ignore case (except explicit caps)
@@ -347,3 +349,6 @@ au BufNewFile,BufRead *.scl set filetype=scala
 " let g:vimtex_latexmk_enabled = 1
 " let g:vimtex_latexmk_callback = 0
 let g:vimtex_view_method = 'zathura'
+
+set tabstop=2
+set shiftwidth=2

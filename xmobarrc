@@ -1,4 +1,6 @@
-Config { font = "xft:Envy Code R:size=10:antialias=true"
+Config { 
+font = "xft:Envy Code R:size=10:antialias=true"
+--          font = "xft:Noto Mono:size=9:antialias=true"
          , bgColor = "#121212"
         -- , fgColor = "#D0D0D0"
          -- , bgColor = "#1E2340"

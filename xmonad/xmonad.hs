@@ -176,6 +176,7 @@ main = do
         , ((mod4Mask, xK_o), takeTopFocus)
         --
         , ((mod4Mask .|. shiftMask , xK_r), renameWorkspace myXPConfig)
+        , ((mod4Mask, xK_v), spawn "gksudo killall wpa_supplicant")
 
         ] 
         -- `removeKeys`
