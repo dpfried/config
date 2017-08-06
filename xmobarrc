@@ -44,5 +44,5 @@ font = "xft:Envy Code R:size=10:antialias=true"
                 , sepChar = "%"
                 , alignSep = "}{"
                  -- , template = "%StdinReader% }{ %pandora% %shell-fm% | %dropbox% | %cpu% | %memory% | %battery% | %eth0% | %wlan0% | %wifi% |  %vol% | %date%"
-                 , template = "%StdinReader% }{ %pandora% | %dropbox% | %vol% | %cpu% | %memory% | %battery% | %dynnetwork% | %wifi% | %date%"
+                 , template = "%StdinReader% }{ %spotify% | %dropbox% | %vol% | %cpu% | %memory% | %battery% | %dynnetwork% | %wifi% | %date%"
 }

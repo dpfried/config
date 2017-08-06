@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 import XMonad
 import XMonad.StackSet as W
 import XMonad.Config.Gnome
@@ -72,6 +73,8 @@ myStartupHook = do
     spawn "gsettings reset org.gnome.settings-daemon.plugins.media-keys volume-up"
     spawn "gnome-power-manager"
     spawn "pidof xscreensaver || xscreensaver -no-splash"
+    spawn "pidof fluxgui || fluxgui"
+    -- spawn "pidof xflux || /usr/bin/xflux -z 90210 -k 3400 -nofork"
     -- spawn "~/scripts/redshift.sh"
     setWMName "LG3D"
 
