@@ -32,6 +32,7 @@ font = "xft:Envy Code R:size=11:antialias=true"
                 --  , Run Date "%b %_D %Y %H:%M:%S" "date" 10
                  , Run Date "%a %e %b %k:%M" "date" 10
                 , Run StdinReader
+                , Run Com "/home/dfried/scripts/backlight.sh" [] "backlight" 30
                 , Run Com "/home/dfried/scripts/wireless.sh" [] "wifi" 30
                 , Run Com "/home/dfried/scripts/vol.sh" [] "vol" 10
                 , Run Com "/home/dfried/scripts/dropbox-status.sh" [] "dropbox" 10
@@ -44,5 +45,5 @@ font = "xft:Envy Code R:size=11:antialias=true"
                 , sepChar = "%"
                 , alignSep = "}{"
                  -- , template = "%StdinReader% }{ %pandora% %shell-fm% | %dropbox% | %cpu% | %memory% | %battery% | %eth0% | %wlan0% | %wifi% |  %vol% | %date%"
-                 , template = "%StdinReader% }{ %spotify% | %dropbox% | %vol% | %cpu% | %memory% | %battery% | %dynnetwork% | %wifi% | %date%"
+                 , template = "%StdinReader% }{ %spotify% | %dropbox% | %backlight% | %vol% | %cpu% | %memory% | %battery% | %dynnetwork% | %wifi% | %date%"
 }

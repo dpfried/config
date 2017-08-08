@@ -14,6 +14,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.StackTile
 import XMonad.Layout.Tabbed
 import XMonad.Hooks.SetWMName
+import Graphics.X11.ExtraTypes.XF86
 -- import XMonad.Actions.GridSelect -- this crashes occasionally
 -- for mouse resize
 import XMonad.Actions.MouseResize
@@ -180,6 +181,11 @@ main = do
         --
         , ((mod4Mask .|. shiftMask , xK_r), renameWorkspace myXPConfig)
         , ((mod4Mask, xK_v), spawn "gksudo killall wpa_supplicant")
+        , ((0, xF86XK_AudioMute), spawn "amixer -q -D pulse sset Master toggle")
+        , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q -D pulse sset Master 6%-")
+        , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q -D pulse sset Master 6%+")
+        , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -10")
+        , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +10")
 
         ] 
         -- `removeKeys`
