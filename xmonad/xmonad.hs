@@ -133,8 +133,8 @@ main = do
         ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
         , ((mod4Mask, xK_F5), spawn "/home/dfried/scripts/start_gnome_panel open")
         , ((mod4Mask, xK_F6), spawn "/home/dfried/scripts/start_gnome_panel close")
-        , ((mod4Mask, xK_m), spawn "nmcli nm enable false")
-        , ((mod4Mask, xK_n), spawn "nmcli nm enable true")
+        , ((mod4Mask, xK_m), spawn "nmcli n off")
+        , ((mod4Mask, xK_n), spawn "nmcli n on")
         -- diisplay cpu temp
         -- , ((mod4Mask, xK_F2), spawn "xscreensaver-command --lock")
         , ((mod4Mask, xK_F2), spawn "gnome-screensaver-command --lock")
@@ -180,7 +180,7 @@ main = do
         , ((mod4Mask, xK_o), takeTopFocus)
         --
         , ((mod4Mask .|. shiftMask , xK_r), renameWorkspace myXPConfig)
-        , ((mod4Mask, xK_v), spawn "gksudo killall wpa_supplicant")
+        , ((mod4Mask, xK_v), spawn "gksudo systemctl restart network-manager")
         , ((0, xF86XK_AudioMute), spawn "amixer -q -D pulse sset Master toggle")
         , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q -D pulse sset Master 6%-")
         , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q -D pulse sset Master 6%+")
