@@ -62,6 +62,10 @@ Bundle 'romainl/vim-qf'
 
 Bundle 'AndrewRadev/linediff.vim'
 
+Bundle 'petRUShka/vim-pycuda.git'
+
+Bundle 'vim-scripts/taglist.vim'
+
 " Keep all swap files together
 set swapfile
 set backupdir=~/.vimtmp
