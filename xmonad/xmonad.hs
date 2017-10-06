@@ -51,6 +51,7 @@ myManageHook = composeAll
     , className =? "Vncviewer" --> doFloat
     , className =? "Unity-2d-panel" --> doIgnore
     , className =? "Unity-2d-launcher" --> doFloat
+    , className =? "Minecraft 1.8" --> doFloat
     ] -- <+> manageScratchPad
 
 myTerminal = "gnome-terminal"

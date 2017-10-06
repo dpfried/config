@@ -122,9 +122,24 @@ export PATH="/home/dfried/anaconda2/bin:$PATH"
 
 export EIGEN3_INCLUDE_DIR=$HOME/projects/eigen
 
-export LD_PRELOAD=/opt/intel/mkl/lib/intel64/libmkl_def.so:/opt/intel/mkl/lib/intel64/libmkl_avx2.so:/opt/intel/mkl/lib/intel64/libmkl_core.so:/opt/intel/mkl/lib/intel64/libmkl_intel_lp64.so:/opt/intel/mkl/lib/intel64/libmkl_intel_thread.so:/opt/intel/lib/intel64_lin/libiomp5.so:$LD_PRELOAD
+export LD_PRELOAD=$LD_PRELOAD:/opt/intel/mkl/lib/intel64/libmkl_def.so:/opt/intel/mkl/lib/intel64/libmkl_avx2.so:/opt/intel/mkl/lib/intel64/libmkl_core.so:/opt/intel/mkl/lib/intel64/libmkl_intel_lp64.so:/opt/intel/mkl/lib/intel64/libmkl_intel_thread.so:/opt/intel/lib/intel64_lin/libiomp5.so
 export MKL_NUM_THREADS=4
 
 export LD_LIBRARY_PATH=$HOME/projects/boost_1_60_0/stage/lib:$LD_LIBRARY_PATH
 
 source $HOME/bin/ssh_hpc.sh
+
+export PATH=/usr/local/cuda-8.0/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+
+export PATH="/usr/local/berkeley_upc/bin:$PATH"
+
+export MUJOCO_PY_MJPRO_PATH="${HOME}/lib/mjpro131"
+export MUJOCO_PY_MJKEY_PATH="${MUJOCO_PY_MJPRO_PATH}/bin/mjkey.txt"
+
+# for tensorflow 1.0 crash bug, https://github.com/tensorflow/tensorflow/issues/6968#issuecomment-279060156
+export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.4":$LD_PRELOAD
+
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
+export MALMO_XSD_PATH="/home/dfried/Malmo-0.21.0-Linux-Ubuntu-16.04-64bit_withBoost/Schemas"

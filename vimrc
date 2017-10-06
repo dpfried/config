@@ -1,14 +1,12 @@
-" pathogen "
-" call pathogen#infect()
-" call pathogen#helptags()
- 
 " vundle
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " load plugins with vundle
-Bundle 'gmarik/vundle'
-" Bundle 'altercation/vim-colors-solarized'
+Bundle 'VundleVim/Vundle.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'stephenmckinney/vim-solarized-powerline'
 " Bundle 'ervandew/supertab.git'
 " Bundle 'jpalardy/vim-slime'
 " Bundle 'Lokaltog/vim-easymotion'
@@ -41,12 +39,11 @@ Bundle 'jmcantrell/vim-virtualenv'
 " Bundle 'ivanov/vim-ipython'
 Bundle 'tpope/vim-commentary'
 " Bundle 'tpope/vim-afterimage'
-Bundle 'airblade/vim-gitgutter'
 " Bundle 'vimez/vim-showmarks.git'
 " Bundle 'rbgrouleff/bclose.vim'
 Bundle 'michaeljsmith/vim-indent-object'
 
-Bundle 'junegunn/seoul256.vim'
+" Bundle 'junegunn/seoul256.vim'
 
 Bundle 'kana/vim-textobj-user'
 " Bundle 'rbonvall/vim-textobj-latex'
@@ -65,6 +62,8 @@ Bundle 'AndrewRadev/linediff.vim'
 Bundle 'petRUShka/vim-pycuda.git'
 
 Bundle 'vim-scripts/taglist.vim'
+
+call vundle#end()
 
 " Keep all swap files together
 set swapfile
@@ -288,14 +287,6 @@ let g:xml_use_xhtml=1
 :set guioptions-=T
 
 :set guifont=Liberation\ Mono\ 10
-
-" colors
-set t_Co=256
-" colorscheme molokai
-let g:seoul256_background = 235
-colo seoul256
-" colo peaksea
-
 noremap j gj
 noremap k gk
 noremap gj j
@@ -356,3 +347,17 @@ let g:vimtex_view_method = 'zathura'
 
 set tabstop=2
 set shiftwidth=2
+
+" colors
+" set t_Co=256
+" " colorscheme molokai
+" let g:seoul256_background = 235
+" colo seoul256
+" colo peaksea
+
+let g:Powerline_colorscheme='solarized16_dark'
+let g:Powerline_theme='short'
+colo solarized
+
+" https://github.com/airblade/vim-gitgutter/issues/243 and https://news.ycombinator.com/item?id=5326438
+au VimEnter * highlight clear SignColumn
