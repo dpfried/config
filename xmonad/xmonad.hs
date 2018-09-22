@@ -9,6 +9,7 @@ import XMonad.Util.EZConfig(additionalKeys, removeKeys)
 import XMonad.Layout.NoBorders
 import System.IO
 import XMonad.Hooks.ManageHelpers
+import XMonad.Layout.Maximize
 import XMonad.Layout.Grid
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.StackTile
@@ -86,7 +87,7 @@ myXPConfig = amberXPConfig
 }
 -- myLayout = windowNavigation $ subTabbed $ (mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed )
 
-myLayout = avoidStruts $ (windowNavigation $ mysubTabbed' $ boringWindows rtall) ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed -- ||| fullscreenFull Full
+myLayout = maximize $ avoidStruts $ (windowNavigation $ mysubTabbed' $ boringWindows rtall) ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed -- ||| fullscreenFull Full
     where
         rtall = mouseResize $ windowArrange $  smartBorders tiled
         tiled = ResizableTall nmaster delta (1/2) []
@@ -95,6 +96,24 @@ myLayout = avoidStruts $ (windowNavigation $ mysubTabbed' $ boringWindows rtall)
         delta = 0.03
         mysubTabbed' x = addTabs shrinkText dfriedTabConfig $ subLayout [] Simplest x
 
+dfriedTabConfig = defaultTheme { 
+                                  -- inactiveColor = "#121212"
+                                -- , activeColor = "#121212"
+                                -- , inactiveColor = "#002B36"
+                                -- , activeColor = "#073642"
+                                -- , inactiveColor = "black"
+                                -- , activeColor = "black"
+                                -- , inactiveTextColor = "grey"
+                                -- , activeTextColor = "white"
+                                activeBorderColor = "#7C7C7C"
+                                , activeTextColor = "#CEFFAC"
+                                , activeColor = "#000000"
+                                , inactiveBorderColor = "#7C7C7C"
+                                , inactiveTextColor = "#EEEEEE"
+                                , inactiveColor = "#000000"
+                                , fontName = "xft:Envy Code R Bold:pixelsize=10"
+                               }
+
 
 main = do
     xmproc <- spawnPipe "xmobar"
@@ -102,9 +121,11 @@ main = do
     xmonad $ defaultConfig
         { terminal = myTerminal
         ,borderWidth = 4
-        ,normalBorderColor = "#1E2340"
+        ,normalBorderColor = "#002b36"
         -- ,normalBorderColor = "#121212"
-        ,focusedBorderColor = "yellow"
+        -- ,focusedBorderColor = "#657b83"
+        ,focusedBorderColor = "white"
+        -- ,focusedBorderColor = "yellow"
         --,focusedBorderColor = "#99CCFF"
         ,modMask = mod4Mask
         ,manageHook = manageDocks <+> myManageHook -- make sure to include myManageHook definition from above
@@ -121,6 +142,8 @@ main = do
         } `additionalKeys`
         -- screenshots
         [ -- ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+        -- alternate suspend
+        ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
         -- , ((0, xK_Print), spawn "scrot")
         -- XF86AudioMute
         -- , ((0, 0x1008ff12), spawn "/home/dfried/scripts/toggle_mute.sh")
@@ -130,12 +153,10 @@ main = do
         -- , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
        -- XF86 Suspend
         -- , ((0, 0x1008ffa7), spawn "home/dfried/scripts/suspend.sh") 
-        -- alternate suspend
-        ((mod4Mask, xK_F4), spawn "/home/dfried/scripts/suspend.sh")
         , ((mod4Mask, xK_F5), spawn "/home/dfried/scripts/start_gnome_panel open")
         , ((mod4Mask, xK_F6), spawn "/home/dfried/scripts/start_gnome_panel close")
-        , ((mod4Mask, xK_m), spawn "nmcli n off")
-        , ((mod4Mask, xK_n), spawn "nmcli n on")
+        -- , ((mod4Mask, xK_m), spawn "nmcli n off")
+        -- , ((mod4Mask, xK_n), spawn "nmcli n on")
         -- diisplay cpu temp
         -- , ((mod4Mask, xK_F2), spawn "xscreensaver-command --lock")
         , ((mod4Mask, xK_F2), spawn "gnome-screensaver-command --lock")
@@ -166,19 +187,26 @@ main = do
         -- , ((mod4Mask, xK_e), appendFilePrompt myXPConfig "/home/dfried/notes")
         , ((mod4Mask, xK_c), scratchpadSpawnActionCustom "gnome-terminal --disable-factory --name scratchpad")
         -- groups
+        , ((mod4Mask .|. controlMask, xK_h), sendMessage $ pullGroup L)
         , ((mod4Mask .|. controlMask, xK_l), sendMessage $ pullGroup R)
         , ((mod4Mask .|. controlMask, xK_k), sendMessage $ pullGroup U)
         , ((mod4Mask .|. controlMask, xK_j), sendMessage $ pullGroup D)
 
+        -- maximize
+        , ((mod4Mask, xK_backslash), withFocused (sendMessage . maximizeRestore))
+        -- focus master
+        , ((mod4Mask, xK_m), windows W.focusMaster)
+
         , ((mod4Mask .|. controlMask, xK_m), withFocused (sendMessage . MergeAll))
         , ((mod4Mask .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
-
         , ((mod4Mask .|. shiftMask, xK_period), onGroup W.focusDown')
         , ((mod4Mask .|. shiftMask, xK_comma), onGroup W.focusUp')
         , ((mod4Mask, xK_period), XMonad.Layout.BoringWindows.focusDown)
         , ((mod4Mask, xK_comma), XMonad.Layout.BoringWindows.focusUp)
         -- since xmonad ignores WM_TAKE_FOCUS
         , ((mod4Mask, xK_o), takeTopFocus)
+
+
         --
         , ((mod4Mask .|. shiftMask , xK_r), renameWorkspace myXPConfig)
         , ((mod4Mask, xK_v), spawn "gksudo systemctl restart network-manager")
@@ -197,16 +225,4 @@ dfriedPP = defaultPP { ppCurrent = xmobarColor "white" "" . wrap "|" "|"
                       , ppUrgent = xmobarColor "red" "white"
                       , ppTitle = xmobarColor "white" "" . shorten 60
 }
-
-dfriedTabConfig = defaultTheme { 
-                                  --inactiveColor = "#121212"
-                                --, activeColor = "#121212"
-                                inactiveColor = "black"
-                                , activeColor = "black"
---                                  inactiveColor = "black"
---                                , activeColor = "black"
-                                , inactiveTextColor = "grey"
-                                , activeTextColor = "white"
-                                , fontName = "xft:Envy Code R Bold:pixelsize=10"
-                               }
 

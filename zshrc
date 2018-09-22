@@ -105,12 +105,13 @@ alias sbt='/home/dfried/bin/sbt -java-home /home/dfried/jdk1.8.0_60/'
 # theme modified from terminal party
 PROMPT='%{$fg[red]%}%(1j.[%j].)%{$fg[green]%} %% '
 # RPS1='%{$fg[blue]%}%~%{$reset_color%} '
-RPS1='%{$fg[white]%}%2~$(git_prompt_info) %{$fg_bold[green]%}%* %{$fg_bold[blue]%}%m%{$reset_color%}'
+RPS1='%{$fg[blue]%}%2~$(git_prompt_info) %{$fg_bold[green]%}%* %{$fg_bold[blue]%}%m%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[yellow]%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ⚡%{$fg[yellow]%}"
+#ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ⚡%{$fg[yellow]%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} *%{$fg[yellow]%}"
 
 export LD_LIBRARY_PATH=/home/dfried/coursework/287/ec4/EC4-PS-starter/mujoco_linux:$LD_LIBRARY_PATH
 
@@ -143,3 +144,10 @@ export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.4":$LD_PRELOAD
 export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 
 export MALMO_XSD_PATH="/home/dfried/Malmo-0.21.0-Linux-Ubuntu-16.04-64bit_withBoost/Schemas"
+
+export NVM_DIR="/home/dfried/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PYTHONPATH="${HOME}/projects/Matterport3DSimulator/build:$PYTHONPATH"
+
+export PATH="${PATH}:${HOME}/projects/expvcs/local"

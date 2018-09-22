@@ -32,7 +32,7 @@ Bundle 'pangloss/vim-javascript'
 " Bundle 'nelstrom/vim-blackboard'
 
 Bundle 'tpope/vim-git'
-Bundle 'klen/python-mode'
+" Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'jmcantrell/vim-virtualenv'
 "Bundle 'mitechie/pyflakes-pathogen'
@@ -49,7 +49,7 @@ Bundle 'kana/vim-textobj-user'
 " Bundle 'rbonvall/vim-textobj-latex'
 Bundle 'nvie/vim-flake8'
 Bundle 'derekwyatt/vim-scala'
-Bundle 'ktvoelker/sbt-vim'
+" Bundle 'ktvoelker/sbt-vim'
 Bundle 'junegunn/vim-easy-align'
 Bundle 'lervag/vimtex'
 " Bundle 'Valloric/YouCompleteMe'
@@ -261,6 +261,9 @@ let g:statline_filename_relative = 1
 
 " gundo
 noremap <F4> :GundoToggle<CR>
+
+" ctrl-p
+map <C-M> :CtrlPBuffer<CR>
 
 " Powerline fonts
 let g:Powerline_symbols = 'fancy'

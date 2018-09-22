@@ -17,6 +17,14 @@ alias amy='ssh amy'
 alias river='ssh river'
 alias lectura='ssh lectura'
 
+#alias gserve="gvim --servername foo"
+#alias vserve="vim --servername foo"
+#alias gload="gvim --servername foo --remote"
+#alias vload="vim --servername foo --remote"
+
+alias cp="cp -i"
+alias mv="mv -i"
+
 # Go up directory tree X number of directories
 function u() {
     COUNTER="$@";
