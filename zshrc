@@ -103,7 +103,8 @@ export IDEA_JDK=/usr/lib/jvm/java-1.6.0-openjdk-amd64/
 alias sbt='/home/dfried/bin/sbt -java-home /home/dfried/jdk1.8.0_60/'
 
 # theme modified from terminal party
-PROMPT='%{$fg[red]%}%(1j.[%j].)%{$fg[green]%} %% '
+#PROMPT='%{$fg[red]%}%(1j.[%j].)%{$fg[green]%} %% '
+PROMPT='%{$fg[red]%}%(1j.[%j].)%{$fg[green]%} %% %{$reset_color%}'
 # RPS1='%{$fg[blue]%}%~%{$reset_color%} '
 RPS1='%{$fg[blue]%}%2~$(git_prompt_info) %{$fg_bold[green]%}%* %{$fg_bold[blue]%}%m%{$reset_color%}'
 
@@ -119,19 +120,19 @@ export LD_LIBRARY_PATH=/home/dfried/coursework/287/ec4/EC4-PS-starter/mujoco_lin
 # export PATH="/home/dfried/anaconda3/bin:$PATH"
 #
 # added by Anaconda2 4.1.1 installer
-export PATH="/home/dfried/anaconda2/bin:$PATH"
+# export PATH="/home/dfried/anaconda2/bin:$PATH"  # commented out by conda initialize
 
 export EIGEN3_INCLUDE_DIR=$HOME/projects/eigen
 
-export LD_PRELOAD=$LD_PRELOAD:/opt/intel/mkl/lib/intel64/libmkl_def.so:/opt/intel/mkl/lib/intel64/libmkl_avx2.so:/opt/intel/mkl/lib/intel64/libmkl_core.so:/opt/intel/mkl/lib/intel64/libmkl_intel_lp64.so:/opt/intel/mkl/lib/intel64/libmkl_intel_thread.so:/opt/intel/lib/intel64_lin/libiomp5.so
-export MKL_NUM_THREADS=4
+#export LD_PRELOAD=$LD_PRELOAD:/opt/intel/mkl/lib/intel64/libmkl_def.so:/opt/intel/mkl/lib/intel64/libmkl_avx2.so:/opt/intel/mkl/lib/intel64/libmkl_core.so:/opt/intel/mkl/lib/intel64/libmkl_intel_lp64.so:/opt/intel/mkl/lib/intel64/libmkl_intel_thread.so:/opt/intel/lib/intel64_lin/libiomp5.so
+#export MKL_NUM_THREADS=4
 
 export LD_LIBRARY_PATH=$HOME/projects/boost_1_60_0/stage/lib:$LD_LIBRARY_PATH
 
 source $HOME/bin/ssh_hpc.sh
 
-export PATH=/usr/local/cuda-8.0/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+#export PATH=/usr/local/cuda-8.0/bin:$PATH
+#export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
 
 export PATH="/usr/local/berkeley_upc/bin:$PATH"
 
@@ -151,3 +152,29 @@ export NVM_DIR="/home/dfried/.nvm"
 export PYTHONPATH="${HOME}/projects/Matterport3DSimulator/build:$PYTHONPATH"
 
 export PATH="${PATH}:${HOME}/projects/expvcs/local"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/dfried/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dfried/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/dfried/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dfried/google-cloud-sdk/completion.zsh.inc'; fi
+
+# export LIBRARY_PATH="$HOME/lib/libtensorflow-cpu-linux-x86_64_1.12.0/lib/":$LIBRARY_PATH
+# export LD_LIBRARY_PATH="$HOME/lib/libtensorflow-cpu-linux-x86_64_1.12.0/lib/":$LD_LIBRARY_PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/dfried/anaconda2/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/dfried/anaconda2/etc/profile.d/conda.sh" ]; then
+        . "/home/dfried/anaconda2/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/dfried/anaconda2/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+#
+source ~/config/private

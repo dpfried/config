@@ -61,3 +61,11 @@ alias android-connect="go-mtpfs /media/MyAndroid/"
 alias android-disconnect="fusermount -u /media/MyAndroid"
 
 alias gvim="gvim > /dev/null 2> /dev/null"
+alias psgrep='ps aux | grep '
+
+function ssh-tunnel() {
+  host=$1
+  port=$2
+  #ssh -N -f -L localhost:${port}:localhost:${port} ${host}
+  ssh -N -L localhost:${port}:localhost:${port} ${host}
+}

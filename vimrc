@@ -63,6 +63,8 @@ Bundle 'petRUShka/vim-pycuda.git'
 
 Bundle 'vim-scripts/taglist.vim'
 
+Bundle 'rickhowe/diffchar.vim'
+
 call vundle#end()
 
 " Keep all swap files together
@@ -352,15 +354,18 @@ set tabstop=2
 set shiftwidth=2
 
 " colors
-" set t_Co=256
-" " colorscheme molokai
+set t_Co=256
+" colorscheme molokai
 " let g:seoul256_background = 235
 " colo seoul256
 " colo peaksea
+" colo default
+colo zenburn
 
-let g:Powerline_colorscheme='solarized16_dark'
+" let g:Powerline_colorscheme='solarized16_dark'
 let g:Powerline_theme='short'
-colo solarized
+" set background=dark
+" colo solarized
 
 " https://github.com/airblade/vim-gitgutter/issues/243 and https://news.ycombinator.com/item?id=5326438
 au VimEnter * highlight clear SignColumn

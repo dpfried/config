@@ -1,5 +1,12 @@
 {-# LANGUAGE FlexibleContexts #-}
-import XMonad
+import XMonad 
+-- import XMonad  hiding ( (|||) )
+-- import XMonad.Layout.LayoutCombinators
+-- import XMonad.Layout.OneBig
+-- import XMonad.Layout.GridVariants
+-- import XMonad.Layout.MultiToggle
+-- import XMonad.Layout.MultiToggle.Instances
+-- import XMonad.Layout.LayoutBuilder
 import XMonad.StackSet as W
 import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
@@ -38,11 +45,15 @@ import XMonad.Util.Scratchpad
 -- sub layouts
 import XMonad.Layout.SubLayouts
 import XMonad.Layout.Fullscreen
+-- import XMonad.Layout.WindowNavigation as WN
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.BoringWindows
 import XMonad.Layout.Simplest(Simplest(..))
 import XMonad.Util.Themes
 import Data.Maybe
+
+-- for ModifiedLayout, used in no padding maximize
+import XMonad.Layout.LayoutModifier
 
 -- workspace names
 import XMonad.Actions.WorkspaceNames
@@ -66,7 +77,7 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
 
 myStartupHook = do
     -- spawn "pidof stalonetray || stalonetray --icon-gravity E --geometry 2x1-0+0 --max-geometry 2x1-0+0 --background '#121212' --skip-taskbar --icon-size 18 --kludges force_icons_size --window-strut none"
-    spawn "pidof stalonetray || stalonetray"
+    spawn "killall stalonetray; pidof stalonetray || stalonetray"
 --    spawn "trayer --SetDockType true --SetPartialStrut true"
     spawn "pidof polkit-gnome-authentication-agent-1 || /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1"
     spawn "pidof unity-settings-daemon || unity-settings-daemon"
@@ -77,6 +88,7 @@ myStartupHook = do
     -- spawn "gnome-power-manager"
     spawn "pidof xscreensaver || xscreensaver -no-splash"
     spawn "pidof xflux || fluxgui"
+    spawn "nitrogen --restore"
     -- spawn "pidof xflux || /usr/bin/xflux -z 90210 -k 3400 -nofork"
     -- spawn "~/scripts/redshift.sh"
     setWMName "LG3D"
@@ -86,7 +98,7 @@ myXPConfig = amberXPConfig
         -- , autoComplete = Just 1000000
 }
 -- myLayout = windowNavigation $ subTabbed $ (mouseResize $ windowArrange $ avoidStruts $ smartBorders tiled ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed )
-
+--
 myLayout = maximize $ avoidStruts $ (windowNavigation $ mysubTabbed' $ boringWindows rtall) ||| smartBorders Grid ||| smartBorders Full ||| smartBorders myTabbed -- ||| fullscreenFull Full
     where
         rtall = mouseResize $ windowArrange $  smartBorders tiled
@@ -95,6 +107,13 @@ myLayout = maximize $ avoidStruts $ (windowNavigation $ mysubTabbed' $ boringWin
         nmaster = 1
         delta = 0.03
         mysubTabbed' x = addTabs shrinkText dfriedTabConfig $ subLayout [] Simplest x
+
+-- myLayout = maximize $ avoidStruts $ smartBorders 
+--                  $ WN.windowNavigation 
+--                  $ subTabbed 
+--                  $ boringWindows 
+--                  $
+--                  mkToggle (MIRROR ?? NOBORDERS ?? FULL ?? EOT) (Grid (55/34) ||| OneBig (3/4) (3/4) ||| ResizableTall 1 0.03 (1/2) [] ||| Full)
 
 dfriedTabConfig = defaultTheme { 
                                   -- inactiveColor = "#121212"
@@ -194,8 +213,11 @@ main = do
 
         -- maximize
         , ((mod4Mask, xK_backslash), withFocused (sendMessage . maximizeRestore))
+        -- , ((mod4Mask, xK_backslash), sendMessage $ Toggle FULL)
         -- focus master
         , ((mod4Mask, xK_m), windows W.focusMaster)
+        -- mirror
+        -- , ((mod4Mask, xK_m), sendMessage $ Toggle MIRROR)
 
         , ((mod4Mask .|. controlMask, xK_m), withFocused (sendMessage . MergeAll))
         , ((mod4Mask .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
