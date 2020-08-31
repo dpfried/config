@@ -360,12 +360,15 @@ set t_Co=256
 " colo seoul256
 " colo peaksea
 " colo default
-colo zenburn
+" colo zenburn
 
-" let g:Powerline_colorscheme='solarized16_dark'
+let g:Powerline_colorscheme='solarized16_dark'
 let g:Powerline_theme='short'
-" set background=dark
-" colo solarized
+set background=dark
+colo solarized
 
 " https://github.com/airblade/vim-gitgutter/issues/243 and https://news.ycombinator.com/item?id=5326438
 au VimEnter * highlight clear SignColumn
+
+" set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+set listchars=tab:→\ ,nbsp:␣,eol:¶,precedes:«,extends:»

@@ -9,7 +9,7 @@ font = "xft:Envy Code R:size=10:antialias=true"
          -- , bgColor = "#1E2340"
         --, bgColor = "#400000"
         , fgColor = "grey"
-        , position = TopW L 96
+        , position = TopW L 95
         --, position = TopW R 97
          lowerOnStart = False
         , commands = [ 

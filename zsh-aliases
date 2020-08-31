@@ -25,6 +25,8 @@ alias lectura='ssh lectura'
 alias cp="cp -i"
 alias mv="mv -i"
 
+alias drsync="rsync --dry-run"
+
 # Go up directory tree X number of directories
 function u() {
     COUNTER="$@";

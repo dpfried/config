@@ -7,3 +7,9 @@ startup_message off
 attrcolor b ".I"    # allow bold colors - necessary for some reason
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # tell screen how to set colors. AB = background, AF=foreground
 defbce on    # use current bg color for erased chars
+
+# vim bindings to move between screen regions. e.g. Ctrl-a j
+bind j focus down
+bind k focus up
+bind l focus right
+bind h focus left
