@@ -71,3 +71,8 @@ function ssh-tunnel() {
   #ssh -N -f -L localhost:${port}:localhost:${port} ${host}
   ssh -N -L localhost:${port}:localhost:${port} ${host}
 }
+
+# SLURM
+alias ujobs='squeue -u $USER -S i -o "%.18i %.10P %.40j %.8u %.2t %.10M %.6D %R"'
+alias ujobs_long='squeue -u $USER -S i -o "%.18i %.10P %.100j %.8u %.2t %.10M %.6D %R %S"'
+alias j='ujobs_long'
