@@ -34,50 +34,10 @@ plugins=(django heroku git python svn extract vi-mode)
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh-aliases
 
-# Customize to your needs...
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin/:/bin:/sbin:/usr/bin:/usr/sbin:/usr/games:$HOME/eclipse:$HOME/scripts:$HOME/.local/bin:.
-
-[[ $EMACS = t ]] && unsetopt zle
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-bindkey -e
-
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
 
-[[ -f "/opt/ros/electric/setup.zsh" ]] && source /opt/ros/electric/setup.zsh
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-# export PYTHONPATH=$PATH:$HOME/.local
-
 autoload zmv
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-export VICARE_LIBRARY_PATH=/home/dfried/scheme-tools:$VICARE_LIBRARY_PATH
-export PATH=/home/dfried/scheme-tools/bin:$PATH
-
-# virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-# source /etc/bash_completion.d/virtualenvwrapper
-# source $HOME/.local/bin/virtualenvwrapper.sh
-# source /usr/local/bin/virtualenvwrapper.sh
-
-# vicare
-export VICARE_LIBRARY_PATH=.:$HOME/vicare/bher:$HOME/vicare/scheme-tools
-export PATH=$HOME/vicare/bher:$PATH
-
-# scala build tool (sbt)
-# export PATH=$HOME/sbt/bin:$PATH
-
-# ~/bin
-export PATH=$HOME/bin:$PATH
-
-# pylearn2
-export PYLEARN2_DATA_PATH=$HOME/pylearn2data
-#
-# perl
-export PERL5LIB=$HOME/perl5/lib/perl5:$PERL5LIB
 
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
@@ -96,12 +56,6 @@ bindkey '^Z' foreground-vi
 
 setopt extended_glob
 
-export IDEA_JDK=/usr/lib/jvm/java-1.6.0-openjdk-amd64/
-
-#alias sbt='JAVA_HOME=/home/dfried/jdk1.8.0_60 sbt'
-
-alias sbt='/home/dfried/bin/sbt -java-home /home/dfried/jdk1.8.0_60/'
-
 # theme modified from terminal party
 #PROMPT='%{$fg[red]%}%(1j.[%j].)%{$fg[green]%} %% '
 PROMPT='%{$fg[red]%}%(1j.[%j].)%{$fg[green]%} %% %{$reset_color%}'
@@ -114,67 +68,4 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 #ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} ⚡%{$fg[yellow]%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} *%{$fg[yellow]%}"
 
-export LD_LIBRARY_PATH=/home/dfried/coursework/287/ec4/EC4-PS-starter/mujoco_linux:$LD_LIBRARY_PATH
-
-# added by Anaconda3 4.0.0 installer
-# export PATH="/home/dfried/anaconda3/bin:$PATH"
-#
-# added by Anaconda2 4.1.1 installer
-# export PATH="/home/dfried/anaconda2/bin:$PATH"  # commented out by conda initialize
-
-export EIGEN3_INCLUDE_DIR=$HOME/projects/eigen
-
-#export LD_PRELOAD=$LD_PRELOAD:/opt/intel/mkl/lib/intel64/libmkl_def.so:/opt/intel/mkl/lib/intel64/libmkl_avx2.so:/opt/intel/mkl/lib/intel64/libmkl_core.so:/opt/intel/mkl/lib/intel64/libmkl_intel_lp64.so:/opt/intel/mkl/lib/intel64/libmkl_intel_thread.so:/opt/intel/lib/intel64_lin/libiomp5.so
-#export MKL_NUM_THREADS=4
-
-export LD_LIBRARY_PATH=$HOME/projects/boost_1_60_0/stage/lib:$LD_LIBRARY_PATH
-
-source $HOME/bin/ssh_hpc.sh
-
-#export PATH=/usr/local/cuda-8.0/bin:$PATH
-#export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
-
-export PATH="/usr/local/berkeley_upc/bin:$PATH"
-
-export MUJOCO_PY_MJPRO_PATH="${HOME}/lib/mjpro131"
-export MUJOCO_PY_MJKEY_PATH="${MUJOCO_PY_MJPRO_PATH}/bin/mjkey.txt"
-
-# for tensorflow 1.0 crash bug, https://github.com/tensorflow/tensorflow/issues/6968#issuecomment-279060156
-export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.4":$LD_PRELOAD
-
-export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
-
-export MALMO_XSD_PATH="/home/dfried/Malmo-0.21.0-Linux-Ubuntu-16.04-64bit_withBoost/Schemas"
-
-export NVM_DIR="/home/dfried/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export PYTHONPATH="${HOME}/projects/Matterport3DSimulator/build:$PYTHONPATH"
-
-export PATH="${PATH}:${HOME}/projects/expvcs/local"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/dfried/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dfried/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/dfried/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dfried/google-cloud-sdk/completion.zsh.inc'; fi
-
-# export LIBRARY_PATH="$HOME/lib/libtensorflow-cpu-linux-x86_64_1.12.0/lib/":$LIBRARY_PATH
-# export LD_LIBRARY_PATH="$HOME/lib/libtensorflow-cpu-linux-x86_64_1.12.0/lib/":$LD_LIBRARY_PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/dfried/anaconda2/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/dfried/anaconda2/etc/profile.d/conda.sh" ]; then
-        . "/home/dfried/anaconda2/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/dfried/anaconda2/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-#
-source ~/config/private
+export PATH="$HOME/homebrew/bin:$HOME/homebrew/sbin:$PATH"
